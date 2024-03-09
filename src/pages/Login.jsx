@@ -41,13 +41,13 @@ function Login() {
           <h1 className="text-4xl text-center">Login</h1>
 
           <div className="login-box">
-            <input type="text" placeholder="Username" required/>
-            <FaUser className="login-icon"/>
+            <input type="email" placeholder="Username" className="text-red-500 p-2 m-2 rounded-3xl w-full h-full border-solid" required/>
+            <FaUser className="absolute right-5 top-1/2 translate-y-[-200%]"/>
           </div>
 
           <div className="login-box">
-            <input type="password" placeholder="Password" required/>
-            <FaLock className="login-icon"/>
+            <input type="password" placeholder="Password" className="text-red-500 p-2 m-2 rounded-3xl w-full h-full border-solid" required/>
+            <FaLock className="absolute right-5 top-1/2 translate-y-[150%]"/>
           </div>
 
           <button className="w-full h-11 bg-white text-gray-800 border-none outline-none rounded-3xl cursor-pointer font-medium">Login</button>
