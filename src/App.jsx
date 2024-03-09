@@ -10,6 +10,8 @@ import Home from './pages/Home';
 import Login from './pages/Login'
 import SearchFlights from './pages/SearchFlights'
 import SearchResult from './pages/SearchResult';
+import Account from './pages/Account';
+import Register from './pages/Register';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,6 +39,14 @@ function App() {
         <Route
           path="/search/flights/results"
           element={<SearchResult/>}
+        />
+        <Route
+          path="/account/details"
+          element={<Account/>}
+        />
+        <Route
+          path="/register"
+          element={<Register/>}
         />
       </Routes>
     </BrowserRouter>

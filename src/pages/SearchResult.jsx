@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSearchParams } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import Nav from '../components/Nav';
+import { useSearchParams, useLocation } from 'react-router-dom';
 
 function SearchResult() {
   const location = useLocation()
@@ -12,9 +12,10 @@ function SearchResult() {
   return (
 
     <div>
+      <Nav/>
       <h1>{JSON.stringify(location.state.flightResult)}</h1>
     </div>
-    
+
   )
 }
 
