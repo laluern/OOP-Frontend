@@ -1,9 +1,11 @@
 import React from 'react'
+import Nav from '../components/Nav'
 
 function Home() {
   return (
     <div>
-        <img src="/src/assets/home.jpg" alt="" />
+        <Nav/>
+        <img src="/src/assets/home-bg.png" className="h-auto w-auto fixed" />
     </div>
   )
 }
