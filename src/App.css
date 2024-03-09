@@ -19,3 +19,12 @@
   -webkit-text-stroke: 2px red;
   color: transparent;
 }
+
+.FlightDetails{
+  border-radius: 40px;
+  margin: 20px auto;
+  width: 800px;
+  height: 200px;
+  background-color: whitesmoke;
+
+}

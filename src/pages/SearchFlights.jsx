@@ -5,11 +5,11 @@ import Nav from '../components/Nav';
 import SearchResult from './SearchResult';
 
 function SearchFlights() {
-  const [departure, setDeparture] = useState('Chiang Mai'); // Set initial value for departure
+  const [departure, setDeparture] = useState("Chaing Mai"); // Set initial value for departure
   const [departureDate, setDepartureDate] = useState();
-  const [destination, setDestination] = useState('Chiang Mai'); // Set initial value for destination
+  const [destination, setDestination] = useState("Hat Yai"); // Set initial value for destination
   const [passenger, setPassenger] = useState();
-  const [promocode, setPromocode] = useState(); 
+  const [promocode, setPromocode] = useState(""); 
   const [result, setResult] = useState(null);
 
   const navigate = useNavigate()
@@ -25,10 +25,11 @@ function SearchFlights() {
       destination: destination,
       departure_date: departureDate,
       total_passenger: passenger,
-      promocode: ""
+      promocode: promocode
     }
 
-    const response = await axios.post("http://localhost:8000/search_flight", data)
+    await axios.post("http://localhost:8000/search_flight", data)
+    const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
     setResult(response.data)
 
     // const params = new URLSearchParams()
@@ -36,11 +37,11 @@ function SearchFlights() {
     // params.append("destination", data.destination)
     // params.append("departureDate", data.departure_date)
 
-    // navigate("/search/flights/results", {
-    //   state: {
-    //     flightResult: response.data
-    //   }
-    // })
+    navigate("/search/flights/results", {
+      state: {
+        flightResult: response.data
+      }
+    })
   }
 
   const handleDepartureChange = (e) => {
@@ -68,8 +69,9 @@ function SearchFlights() {
       <Nav />
 
       {
-        !result ? (
-          <div div className="">
+        // !result ? (
+        (
+          <div className="">
             <div className="antialiased flex justify-center items-center min-h-screen">
               <div className="bg-red-500 p-10 rounded-xl">
                 {/* departure */}
@@ -112,8 +114,7 @@ function SearchFlights() {
             </div>
           </div>
         )
-        // กรณีที่มี flight
-          : <div>{JSON.stringify(result)}</div>
+          // : <div>{JSON.stringify(result)}</div>
       }
 
     </div >
