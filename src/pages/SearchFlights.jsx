@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Nav from '../components/Nav';
 import SearchResult from './SearchResult';
 
 function SearchFlights() {
@@ -51,6 +52,7 @@ function SearchFlights() {
 
   return (
     <div>
+      <Nav/>
       <div className="search-box">
         
         <div className="antialiased flex justify-center items-center min-h-screen">
@@ -90,7 +92,7 @@ function SearchFlights() {
               <label for="promocode" className="m-0.5 text-white">Promocode</label>
               <input type="text" name="promocode" className="p-2 rounded-md mx-1.5 w-5/6"/>
             </div>
-            <button onClick={sendData} className="bg-white mt-6 w-1/2 h-11 mx-12 rounded-md hover:bg-gray-300">Search</button>
+            <button onClick={sendData} className="bg-white mt-6 w-1/2 h-11 mx-12 rounded-2xl hover:bg-gray-300">Search</button>
           </div>
         </div>
       </div>
