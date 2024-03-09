@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // Components
 import FirstPage from './pages/FirstPage';
 import Navbar from './components/Navbar'
+import Home from './pages/Home';
 import Login from './pages/Login'
 import SearchFlights from './pages/SearchFlights'
 import SearchResult from './pages/SearchResult';
@@ -24,6 +25,10 @@ function App() {
         <Route
           path="/login"
           element={<Login/>}
+        />
+        <Route
+          path="/home"
+          element={<Home/>}
         />
         <Route
           path="/search/flights"

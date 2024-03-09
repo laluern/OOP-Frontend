@@ -21,7 +21,7 @@ function Nav() {
         </div>
 
         <ul className="text-white flex flex-row gap-4 m-3">
-            <li><a href="/" onClick={handleHome}>HOME</a></li>
+            <li><a href="/home" onClick={handleHome}>HOME</a></li>
             <li><a href="/search" onClick={handleSearch}>SEARCH</a></li>
             <li><a href="#">ACCOUNT</a></li>
         </ul>
