@@ -10,7 +10,7 @@ function SearchFlights() {
   const [destination, setDestination] = useState("Hat Yai"); // Set initial value for destination
   const [passenger, setPassenger] = useState();
   const [promocode, setPromocode] = useState(""); 
-  const [result, setResult] = useState(null);
+  // const [result, setResult] = useState(null);
 
   const navigate = useNavigate()
   
@@ -28,9 +28,10 @@ function SearchFlights() {
       promocode: promocode
     }
 
-    await axios.post("http://localhost:8000/search_flight", data)
-    const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
-    setResult(response.data)
+      await axios.post("http://localhost:8000/search_flight", data)
+      const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
+    
+    // setResult(response.data)
 
     // const params = new URLSearchParams()
     // params.append("departure", data.departure)
