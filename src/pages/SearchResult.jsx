@@ -10,7 +10,6 @@ function SearchResult() {
   searchParams.get("departure")
   searchParams.get("destination")
   return (
-
     <div>
       <Nav/>
       <h1>{JSON.stringify(location.state.flightResult)}</h1>

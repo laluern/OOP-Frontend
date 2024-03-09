@@ -7,6 +7,7 @@ function Account() {
   return (
     <div>
         <Nav/>
+        {/* account details */}
         <h1>Hi</h1>
     </div>
   )
