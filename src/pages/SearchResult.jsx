@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Nav from '../components/Nav';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import FlightDetails from '../components/FlightDetails';
+import Sorting from '../components/Sorting'
 
 function SearchResult() {
   const location = useLocation()
@@ -16,12 +17,12 @@ function SearchResult() {
   return (
     <div>
       <Nav />
+      <div className="flex justify-center">
+        <Sorting/>
+      </div>
       {Object.keys(flightList).map(flightKey => (
-        <div key={flightKey}>
-          <h1>Flight Key: {flightKey}</h1>
+        <div className="flex justify-center" key={flightKey}>
           <FlightDetails flight_info={flightList[flightKey]} />
-          <button>Select Flight</button>
-          <h2>**************************************</h2>
         </div>
       ))}
     </div>
