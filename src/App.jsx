@@ -13,7 +13,6 @@ import SearchResult from './pages/SearchResult';
 import AddOn from './pages/AddOn';
 import SelectSeat from './pages/SelectSeat';
 import SelectLuggage from './pages/SelectLuggage';
-import FillInfo from './pages/FillInfo';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -61,6 +60,18 @@ function App() {
         <Route
           path="/register"
           element={<Register/>}
+        />
+        <Route
+          path="/payment"
+          element={<Payment/>}
+        />
+        <Route
+          path="/payment/card"
+          element={<PayByCard/>}
+        />
+        <Route
+          path="/payment/mobile"
+          element={<PayByMobile/>}
         />
       </Routes>
     </BrowserRouter>

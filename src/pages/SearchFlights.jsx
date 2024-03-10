@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Nav from '../components/Nav';
-import SearchResult from './SearchResult';
 
 function SearchFlights() {
   const [departure, setDeparture] = useState("Chiang Mai"); // Set initial value for departure
