@@ -24,7 +24,7 @@ function SelectSeat(){
     };
 
   return (
-    <div>
+    <div className="flex justify-center flex-col items-center">
       <div className="seat-map">
         {Object.keys(SeatData).map((seat) => (
           <div
@@ -42,10 +42,13 @@ function SelectSeat(){
         {selectedSeat ? (
           <div>
             <p>Seat: {selectedSeat}</p>
-            <p>Price: {SeatData[selectedSeat].price}</p>
+            <p>Price: {SeatData[selectedSeat].price} THB</p>
           </div>
         ) : (
-          <p>No seat selected</p>
+          <div>
+            <p>Seat: -</p>
+            <p>Price: -</p>
+          </div>
         )}
       </div>
     </div>

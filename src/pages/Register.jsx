@@ -77,7 +77,11 @@ function Register() {
                 <h1>Register</h1>
     
                 <div>
-                    <input type="text" placeholder="Full name" value={fullname} onChange={handleFullnameChange} required/>
+                    <input type="text" placeholder="First name" value={firstname} onChange={handleFullnameChange} required/>
+                    <LuUser className="register-icon"/>
+                </div>
+                <div>
+                    <input type="text" placeholder="Surname" value={surname} onChange={handleFullnameChange} required/>
                     <LuUser className="register-icon"/>
                 </div>
                 <div>
