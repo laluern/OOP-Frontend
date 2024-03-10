@@ -77,21 +77,29 @@ function SearchFlights() {
                 <div className="flex flex-col">
                   <label for="departure" className="text-white">Departure</label>
                   <select value={departure} onChange={handleDepartureChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
-                    <option value="Chiang Mai">Chiangmai</option>
-                    <option value="Hat Yai">Hatyai</option>
-                    <option value="Suvarnabhumi">Suvarnabhumi</option>
-                    <option value="Khon Kaen">Khonkaen</option>
+                    {destination && (
+                      <>
+                        <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiangmai</option>
+                        <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hatyai</option>
+                        <option value="Suvarnabhumi" disabled={destination === "Suvarnabhumi"}>Suvarnabhumi</option>
+                        <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khonkaen</option>
+                      </>
+                    )}
                   </select>
                 </div>
                 {/* destination */}
                 <div className="flex flex-col">
-                  <label for="destination" className="text-white">Destination</label>
-                  <select value={destination} onChange={handleDestinationChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
-                    <option value="Chiang Mai">Chiangmai</option>
-                    <option value="Hat Yai">Hatyai</option>
-                    <option value="Suvarnabhumi">Suvarnabhumi</option>
-                    <option value="Khon Kaen">Khonkaen</option>
-                  </select>
+                <label for="destination" className="text-white">Destination</label>
+                <select value={destination} onChange={handleDestinationChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
+                  {departure && (
+                    <>
+                      <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiangmai</option>
+                      <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hatyai</option>
+                      <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>
+                      <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khonkaen</option>
+                    </>
+                  )}
+                </select>  
                 </div>
                 {/* passenger */}
                 <div className="flex flex-col">
