@@ -5,7 +5,8 @@ import { LuUser, LuPhone, LuHome, LuCalendarDays } from "react-icons/lu";
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 
 function Register() {
-    const [fullname, setFullname] = useState();
+    const [firstName, setFirstName] = useState();
+    const [surname, setSurname] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
@@ -16,13 +17,13 @@ function Register() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log(fullname, email, password, phoneNumber, address, birthDate
+        console.log(firstName, surname, email, password, phoneNumber, address, birthDate
         )
-      }, [fullname, email, password, phoneNumber, address, birthDate])
+      }, [firstName, surname, email, password, phoneNumber, address, birthDate])
 
     const sendData = async () => {
         const data = {
-            full_name: fullname,
+            full_name: firstName + " " + surname,
             email: email,
             password: password,
             phone_number: phoneNumber,
@@ -38,11 +39,15 @@ function Register() {
             alert("Failed")
             return null
         }
-        // navigate("/home")
+        navigate("/home")
     }
 
-    const handleFullnameChange = (e) => {
-        setFullname(e.target.value);
+    const handleFirstNameChange = (e) => {
+        setFirstName(e.target.value);
+    };
+
+    const handleSurnameChange = (e) => {
+        setSurname(e.target.value);
       };
     
     const handleEmailChange = (e) => {
@@ -77,7 +82,11 @@ function Register() {
                 <h1 className=''>Sign up</h1>
     
                 <div>
-                    <input type="text" placeholder="Full name" value={fullname} onChange={handleFullnameChange} required/>
+                    <input type="text" placeholder="First name" value={firstName} onChange={handleFirstNameChange} required/>
+                    <LuUser className="register-icon"/>
+                </div>
+                <div>
+                    <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
                     <LuUser className="register-icon"/>
                 </div>
                 <div>
@@ -89,7 +98,7 @@ function Register() {
                     <MdLockOutline className="register-icon"/>
                 </div>
                 <div>
-                    <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} required/>
+                    <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} required/>
                     <LuPhone className="register-icon"/>
                 </div>
                 <div>
@@ -101,7 +110,7 @@ function Register() {
                     <LuCalendarDays className="register-icon"/>
                 </div>
                 <button className="bg-green-400" onClick={sendData}>Register</button>
-            </div> : 
+            </div> :
             <div>
                 <button onClick={handleRegister}>home</button>
             </div>

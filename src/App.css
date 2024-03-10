@@ -15,3 +15,62 @@
   font-weight: 600;
   color: white;
 }
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(2, 40px) 100px repeat(3, 40px);
+  gap: 15px;
+}
+
+.seat-map:before {
+  content: " ";
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50px + 5px);
+  width: 10px;
+}
+
+.seat-map:before div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+.seat {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 0.8em;
+  border-radius: 50%;
+}
+
+.selected {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+.reserved {
+  background-color: #d9534f;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+h3 {
+  margin-top: 200px;
+}
+
+.selected-seat-details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
