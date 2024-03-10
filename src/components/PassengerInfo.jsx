@@ -7,7 +7,7 @@ function PassengersInfo(){
     const [citizenID, setCitizenID] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [birthDate, setBirthDate] = useState();
-    const [gender, setGender] = useState();
+    const [gender, setGender] = useState('');
 
     const data = {
         full_name: firstname + " " + surname,
@@ -39,39 +39,40 @@ function PassengersInfo(){
         setBirthDate(e.target.value);
     };
 
-    const handleGenderChange = (e) => {
-        setGender(e.target.value);
-    };
-
+    const handleGenderChange = (selectedGender) => {
+        setGender(selectedGender);
+      };
+    
     return (
-    <div>
-        <div>
+    <div className="passengers-info">
+        <div className='flex justify-center'>
             <input type="text" placeholder="First name" value={firstname} onChange={handleFirstnameChange} required/>
             <LuUser className="register-icon"/>
         </div>
-        <div>
+        <div className='flex justify-center'>
             <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
             <LuUser className="register-icon"/>
         </div>
-        <div>
+        <div className='flex justify-center'>
             <input type="text" placeholder="citizen ID" value={phoneNumber} onChange={handleCitizenIDChange} required/>
             <LuPhone className="register-icon"/>
         </div>
-        <div>
+        <div className='flex justify-center'>
             <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} required/>
             <LuPhone className="register-icon"/>
         </div>
-        <div>
+        <div className='flex justify-center'>
             <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
-            <LuCalendarDays className="register-icon"/>
         </div>
-        <div>
-            <button type="submit" onClick={() => handleGenderChange('male')} style={{ marginRight: '10px' }}>
-            Male
-            </button>
-            <button type="submit" onClick={() => handleGenderChange('female')}>
-            Female
-            </button>
+        <div className="gender-selection">
+        <label>
+          <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={() => handleGenderChange('male')} />
+          Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={() => handleGenderChange('female')} />
+          Female
+        </label>
       </div>
     </div>
     )
