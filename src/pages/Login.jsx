@@ -49,26 +49,32 @@ function Login() {
 
   return (
     <div className="antialiased flex justify-center items-center min-h-screen">
+      <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
+        <source src="/src/assets/sky.mp4" type="video/mp4" />
+      </video>
       {
         !loginResult ? 
-        <div className="w-96 bg-red-500 text-gray-50 rounded-xl border-2 border-solid border-gray-400 py-8 px-10 backdrop-blur-md shadow-2xl">
-        
-          <h1 className="text-4xl text-center">Login</h1>
+        <div className="w-96 text-gray-50 rounded-xl border-solid border-1 border-slate-50 py-8 px-10 backdrop-blur-lg shadow-2xl">
 
-          <div className="login-box">
-            <input value={email} onChange={handleEmail} type="email" placeholder="Email" className="text-red-500 p-2 m-2 rounded-3xl w-full h-full border-solid" required/>
-            <FaUser className="absolute right-5 top-1/2 translate-y-[-200%]"/>
+          <h1 className="text-4xl text-center text-5x1 font-medium">Login</h1>
+          
+          {/* Login box */}
+          <div className="mt-8 mb-3">
+            <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+            <input value={email} onChange={handleEmail} type="email" placeholder="Email" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
+            <FaUser className="col-span-1 align-middle h-full text-red-500"/>
+            </div>
+
+            <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5">
+            <input value={password} onChange={handlePassword} type="password" placeholder="Password" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
+            <FaLock className="col-span-1 align-middle h-full text-red-500"/>
+            </div>
           </div>
 
-          <div className="login-box">
-            <input value={password} onChange={handlePassword} type="password" placeholder="Password" className="text-red-500 p-2 m-2 rounded-3xl w-full h-full border-solid" required/>
-            <FaLock className="absolute right-5 top-1/2 translate-y-[150%]"/>
-          </div>
-
-          <button className="w-full h-11 bg-white text-gray-800 border-none outline-none rounded-3xl cursor-pointer font-medium" onClick={sendData}>Login</button>
+          <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Login</button>
 
           <div className="text-center mt-4 text-sm">
-            <p>Don't have an account? <a href="" className="text-blue-200 font-bold hover:underline" onClick={handleRegister}>Register</a></p>
+            <p>Don't have an account? <a href="" className="text-neutral-50 font-bold hover:underline hover:text-red-500" onClick={handleRegister}>Register</a></p>
           </div>
 
         </div> : <button onClick={handleLogin}>home</button>

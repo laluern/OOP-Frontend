@@ -14,8 +14,3 @@
   color: white;
   transition: 0.5s;
 }
-
-.fly-with-us:hover {
-  -webkit-text-stroke: 2px red;
-  color: transparent;
-}
