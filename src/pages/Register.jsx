@@ -89,7 +89,7 @@ function Register() {
                     <MdLockOutline className="register-icon"/>
                 </div>
                 <div>
-                    <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} required/>
+                    <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} required/>
                     <LuPhone className="register-icon"/>
                 </div>
                 <div>
