@@ -28,8 +28,8 @@ function SearchFlights() {
       promocode: promocode
     }
 
-      const response = await axios.post("http://localhost:8000/search_flight", data)
-      console.log(response.data)
+      const total_passenger = data.total_passenger
+      await axios.post("http://localhost:8000/search_flight", data)
       // const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
     
     // setResult(response.data)
@@ -39,7 +39,10 @@ function SearchFlights() {
     // params.append("destination", data.destination)
     // params.append("departureDate", data.departure_date)
 
-    navigate("/search/flights/results", {
+    navigate("/search/flights_results", {
+      state: {
+        total_passenger: total_passenger
+      }
     })
   }
 
@@ -78,10 +81,10 @@ function SearchFlights() {
                   <select value={departure} onChange={handleDepartureChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
                     {destination && (
                       <>
-                        <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiangmai</option>
-                        <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hatyai</option>
+                        <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiang Mai</option>
+                        <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hat Yai</option>
                         <option value="Suvarnabhumi" disabled={destination === "Suvarnabhumi"}>Suvarnabhumi</option>
-                        <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khonkaen</option>
+                        <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khon Kaen</option>
                       </>
                     )}
                   </select>
@@ -92,10 +95,10 @@ function SearchFlights() {
                 <select value={destination} onChange={handleDestinationChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
                   {departure && (
                     <>
-                      <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiangmai</option>
-                      <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hatyai</option>
+                      <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiang Mai</option>
+                      <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hat Yai</option>
                       <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>
-                      <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khonkaen</option>
+                      <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khon Kaen</option>
                     </>
                   )}
                 </select>  

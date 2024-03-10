@@ -1,6 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function FlightDetails({flight_info}){
+
+      const navigate = useNavigate()
+  
+      const goto = (route) => {
+          navigate(route);
+      };
 
     const [departure_date, departure_time] = flight_info.departure_time.split(' ');
     const [destination_date, destination_time] = flight_info.destination_time.split(' ');
@@ -27,7 +34,7 @@ function FlightDetails({flight_info}){
           </div>
         )}
         <div className="flex justify-center">
-          <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5">Select</button>
+          <button onClick={() => goto("/add_on")} className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5">Select</button>
         </div>
       </div>
     </div>
