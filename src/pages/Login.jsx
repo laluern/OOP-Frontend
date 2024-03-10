@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import Register from './Register';
 import '../App.css'
+import axios from 'axios';
 import { FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loginResult, setLoginResult] = useState(null);
 
   useEffect(()=> {
     console.log(email, password)
   }, [email, password])
+
+  const navigate = useNavigate()
 
   const sendData = async () => {
     const data = {
       email: email,
       password: password
     }
-
-    const response = await axios.post("http://127.0.0.1:8000/login", data)
-    console.log(response.data)
+    try{
+      const response = await axios.post("http://127.0.0.1:8000/login", data)
+    }
+    catch(error) {
+      alert("Login failed, Please try again");
+      return null
+    }
+    navigate("/home")
   }
 
   const handleEmail = (e) => {
@@ -28,11 +39,14 @@ function Login() {
     setPassword(e.target.value);
   };
 
+  function handleRegister() {
+    navigate("/register")
+  }
+
   return (
     <div className="antialiased flex justify-center items-center min-h-screen">
       <div className="w-96 bg-red-500 text-gray-50 rounded-xl border-2 border-solid border-gray-400 py-8 px-10 backdrop-blur-md shadow-2xl">
-        <form action="">
-
+        
           <h1 className="text-4xl text-center">Login</h1>
 
           <div className="login-box">
@@ -48,10 +62,10 @@ function Login() {
           <button className="w-full h-11 bg-white text-gray-800 border-none outline-none rounded-3xl cursor-pointer font-medium" onClick={sendData}>Login</button>
 
           <div className="text-center mt-4 text-sm">
-            <p>Don't have an account? <a href="" className="text-blue-200 font-bold hover:underline">Register</a></p>
+            <p>Don't have an account? <a href="" className="text-blue-200 font-bold hover:underline" onClick={handleRegister}>Register</a></p>
           </div>
 
-        </form>
+
       </div>
     </div>
   )

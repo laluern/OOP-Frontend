@@ -8,6 +8,7 @@ import FirstPage from './pages/FirstPage';
 import Navbar from './components/Navbar'
 import Home from './pages/Home';
 import Login from './pages/Login'
+import Register from './pages/Register';
 import SearchFlights from './pages/SearchFlights'
 import SearchResult from './pages/SearchResult';
 
@@ -37,6 +38,10 @@ function App() {
         <Route
           path="/search/flights/results"
           element={<SearchResult/>}
+        />
+        <Route
+          path="/register"
+          element={<Register/>}
         />
       </Routes>
     </BrowserRouter>
