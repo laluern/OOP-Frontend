@@ -14,7 +14,7 @@ function FlightDetails({flight_info}){
 
     return (
     <div className='bg-gray-100 w-1/2 rounded-3xl m-5'>
-      <div className="flex justify-center flex space-x-48">
+      <div className="flex justify-center space-x-48">
         <p>{flight_info.departure}</p>
         <p>{flight_info.duration}</p>
         <p>{flight_info.destination}</p>

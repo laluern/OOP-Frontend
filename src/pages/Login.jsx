@@ -23,12 +23,12 @@ function Login() {
     }
     try{
       const response = await axios.post("http://127.0.0.1:8000/login", data)
+      setLoginResult(response.data)
     }
     catch(error) {
       alert("Login failed, Please try again");
       return null
     }
-    navigate("/home")
   }
 
   const handleEmail = (e) => {
@@ -43,9 +43,15 @@ function Login() {
     navigate("/register")
   }
 
+  function handleLogin() {
+    navigate("/home")
+  }
+
   return (
     <div className="antialiased flex justify-center items-center min-h-screen">
-      <div className="w-96 bg-red-500 text-gray-50 rounded-xl border-2 border-solid border-gray-400 py-8 px-10 backdrop-blur-md shadow-2xl">
+      {
+        !loginResult ? 
+        <div className="w-96 bg-red-500 text-gray-50 rounded-xl border-2 border-solid border-gray-400 py-8 px-10 backdrop-blur-md shadow-2xl">
         
           <h1 className="text-4xl text-center">Login</h1>
 
@@ -65,8 +71,8 @@ function Login() {
             <p>Don't have an account? <a href="" className="text-blue-200 font-bold hover:underline" onClick={handleRegister}>Register</a></p>
           </div>
 
-
-      </div>
+        </div> : <button onClick={handleLogin}>home</button>
+      }
     </div>
   )
 }
