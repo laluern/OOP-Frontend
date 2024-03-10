@@ -50,7 +50,7 @@ function Login() {
   return (
     <div className="antialiased flex justify-center items-center min-h-screen">
       <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
-        <source src="/src/assets/sky.mp4" type="video/mp4" />
+        <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
       </video>
       {
         !loginResult ? 
@@ -74,7 +74,7 @@ function Login() {
           <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Login</button>
 
           <div className="text-center mt-4 text-sm">
-            <p>Don't have an account? <a href="" className="text-neutral-50 font-bold hover:underline hover:text-red-500" onClick={handleRegister}>Register</a></p>
+            <p>Don't have an account? <a href="" className="text-neutral-50 font-bold hover:underline hover:text-red-500 italic" onClick={handleRegister}>Sign up!</a></p>
           </div>
 
         </div> : <button onClick={handleLogin}>home</button>

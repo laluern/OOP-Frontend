@@ -74,7 +74,7 @@ function Register() {
         {
             !result ? 
             <div className="bg-red-500 p-7 rounded-xl">
-                <h1>Register</h1>
+                <h1 className=''>Sign up</h1>
     
                 <div>
                     <input type="text" placeholder="Full name" value={fullname} onChange={handleFullnameChange} required/>

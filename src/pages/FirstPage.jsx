@@ -17,7 +17,7 @@ function Home() {
         
       <div className="text-center">
         <h1 className="fly-with-us">Fly with us</h1>
-        <button onClick={handleLogin} className="inline-block text-white bg-red-500 font-2xl border-solid py-3.5 px-16 rounded-3xl mt-5 hover:bg-red-700">Log in</button>
+        <button onClick={handleLogin} className="transition-colors duration-200 inline-block text-white font-semibold bg-red-500 font-2xl border-solid py-3.5 px-16 rounded-3xl mt-5 hover:bg-red-600">Log in</button>
       </div>
     </div>
   )
