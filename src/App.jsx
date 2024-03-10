@@ -5,12 +5,15 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // Components
 import FirstPage from './pages/FirstPage';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Login from './pages/Login'
+import Login from './pages/Login';
 import Register from './pages/Register';
-import SearchFlights from './pages/SearchFlights'
+import SearchFlights from './pages/SearchFlights';
 import SearchResult from './pages/SearchResult';
+import AddOn from './pages/AddOn';
+import SelectSeat from './pages/SelectSeat';
+import SelectLuggage from './pages/SelectLuggage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,8 +39,20 @@ function App() {
           element={<SearchFlights/>}
         />
         <Route
-          path="/search/flights/results"
+          path="/search/flights_results"
           element={<SearchResult/>}
+        />
+        <Route
+          path="add_on"
+          element={<AddOn/>}
+        />          
+        <Route
+          path="add_on/select_seat"
+          element={<SelectSeat/>}
+        />
+        <Route
+          path="add_on/select_luggage"
+          element={<SelectLuggage/>}
         />
         <Route
           path="/register"

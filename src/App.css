@@ -19,3 +19,39 @@
   -webkit-text-stroke: 2px red;
   color: transparent;
 }
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.selected {
+  background-color: #5cb85c; /* Green */
+  color: #fff;
+}
+
+.reserved {
+  background-color: #d9534f; /* Red */
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.selected-seat-details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
