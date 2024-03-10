@@ -5,7 +5,7 @@ import Nav from '../components/Nav';
 import SearchResult from './SearchResult';
 
 function SearchFlights() {
-  const [departure, setDeparture] = useState("Chaing Mai"); // Set initial value for departure
+  const [departure, setDeparture] = useState("Chiang Mai"); // Set initial value for departure
   const [departureDate, setDepartureDate] = useState();
   const [destination, setDestination] = useState("Hat Yai"); // Set initial value for destination
   const [passenger, setPassenger] = useState();
@@ -28,8 +28,9 @@ function SearchFlights() {
       promocode: promocode
     }
 
-      await axios.post("http://localhost:8000/search_flight", data)
-      const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
+      const response = await axios.post("http://localhost:8000/search_flight", data)
+      console.log(response.data)
+      // const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
     
     // setResult(response.data)
 
@@ -39,9 +40,6 @@ function SearchFlights() {
     // params.append("departureDate", data.departure_date)
 
     navigate("/search/flights/results", {
-      state: {
-        flightResult: response.data
-      }
     })
   }
 
