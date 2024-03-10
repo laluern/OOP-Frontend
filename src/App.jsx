@@ -13,6 +13,10 @@ import SearchResult from './pages/SearchResult';
 import AddOn from './pages/AddOn';
 import SelectSeat from './pages/SelectSeat';
 import SelectLuggage from './pages/SelectLuggage';
+import Payment from './pages/Payment';
+import PayByCard from './pages/PayByCard';
+import PayByMobile from './pages/PayByMobile';
+import FillInfo from './pages/FillInfo';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -54,7 +58,7 @@ function App() {
           element={<SelectLuggage/>}
         />
         <Route
-          path="/fill_info"
+          path="fill_info"
           element={<FillInfo/>}
         />
         <Route
