@@ -66,7 +66,6 @@ function SearchFlights() {
   return (
     <div>
       <Nav />
-
       {
         // !result ? (
         (
