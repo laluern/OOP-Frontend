@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Nav from '../components/Nav'
-import { useCookies } from 'react-cookie'
+// import { useCookies } from 'react-cookie'
 
 function Account() {
   const [cookies, setCookie] = useCookies(['user']);
