@@ -10,7 +10,7 @@ function PayByCard() {
   const [securityCode, setSecurityCode] = useState();
 
   const handleCardHolderName = (e) => {
-    set
+    setCardHolderName(e.target.value);
   };
 
   const sendData = async () => {
@@ -20,10 +20,10 @@ function PayByCard() {
   return (
     <div className="bg-red-500 p-10 m-5 w-1/2">
       <div className="flex flex-col gap-4 w-1/3">
-        <input type="text" placeholder="Card Holder Name"/>
+        <input type="text" placeholder="Card Holder Name" onChange={handleCardHolderName}/>
         <input type="text" placeholder="Card No"/>
         <input type="date"/>
-        <input type="password" placeholder="Password"/>
+        <input type="password" placeholder="Security Code"/>
       </div>
       <button className="bg-white m-5">Pay</button>
     </div>

@@ -1,12 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function FlightDetails({flight_info}){
+function FlightDetails({flight_info, total_passenger}){
 
       const navigate = useNavigate()
   
       const goto = (route) => {
-          navigate(route);
+          navigate(route, {
+              state: {
+                booking_data: flight_info,
+                total_passenger: total_passenger
+              }
+            })
       };
 
     const [departure_date, departure_time] = flight_info.departure_time.split(' ');
