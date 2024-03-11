@@ -54,11 +54,11 @@ function PassengersInfo(){
             <LuUser className="register-icon"/>
         </div>
         <div className='flex justify-center'>
-            <input type="text" placeholder="citizen ID" value={phoneNumber} onChange={handleCitizenIDChange} required/>
+            <input type="text" placeholder="citizen ID" value={citizenID} onChange={handleCitizenIDChange} maxLength="13" required/>
             <LuPhone className="register-icon"/>
         </div>
         <div className='flex justify-center'>
-            <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} required/>
+            <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} maxLength="10" required/>
             <LuPhone className="register-icon"/>
         </div>
         <div className='flex justify-center'>
