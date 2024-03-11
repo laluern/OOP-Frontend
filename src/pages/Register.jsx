@@ -33,13 +33,14 @@ function Register() {
         try {
             const response = await axios.post("http://localhost:8000/register", data)
             console.log(response.data)
-            setResult(response.data)
+            setResult(response.data.status)
+            const responseMessageString = JSON.stringify(response.data.message)
+            alert(responseMessageString)
         }
         catch(error) {
             alert("Failed")
             return null
         }
-        navigate("/home")
     }
 
     const handleFirstNameChange = (e) => {
@@ -81,40 +82,40 @@ function Register() {
         </video>
         {
             !result ? 
-            <div className="text-red-500 backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
+            <div className=" backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
                 
                 <h1 className="text-gray-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
-                <div className="mt-8 mb-3">
-                    <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
-                        <input type="text" placeholder="First name" value={firstName} onChange={handleFirstNameChange} className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
-                        <LuUser className="register-icon col-span-1 align-middle h-full"/>
+                <div className="mt-8 mb-4">
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="text" placeholder="First name" value={firstName} onChange={handleFirstNameChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <LuUser className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
-                    <div>
-                        <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
-                        <LuUser className="register-icon"/>
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <LuUser className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
-                    <div>
-                        <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} required/>
-                        <MdOutlineMailOutline className="register-icon"/>
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <MdOutlineMailOutline className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
-                    <div>
-                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} required/>
-                        <MdLockOutline className="register-icon"/>
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <MdLockOutline className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
-                    <div>
-                        <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} required/>
-                        <LuPhone className="register-icon"/>
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <LuPhone className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
-                    <div>
-                        <input type="text" placeholder="Address" value={address} onChange={handleAddressChange} required/>
-                        <LuHome className="register-icon"/>  
+                    <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="text" placeholder="Address" value={address} onChangetranslate-x-5={handleAddressChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <LuHome className="register-icon col-span-2 align-middle h-full translate-x-5"/>  
                     </div>
-                    <div>
-                        <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
-                        <LuCalendarDays className="register-icon"/>
+                    <div className="grid grid-col-11 gap-4">
+                        <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} className="col-span-9 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800"required/>
                     </div>
-                    <button className="bg-green-400" onClick={sendData}>Register</button>
-                </div>
+                    </div>
+
+                    <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Register</button>
                 </div> :
                 <div>
                     <button onClick={handleRegister}>home</button>
