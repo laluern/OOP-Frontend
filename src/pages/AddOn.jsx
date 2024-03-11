@@ -1,17 +1,33 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import BookingDetails from '../components/BookingDetails'
+import { useLocation } from 'react-router-dom';
+
 
 function AddOn(){
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     const goto = (route) => {
-        navigate(route);
+        navigate(route, {
+            state: {
+              flight_instance_no: location.state.booking_data.flight_instance_no,
+              total_passenger: location.state.total_passenger
+            }
+          })
     };
 
     return(
         <div>
+            <div>
+                <label className="flex justify-center">Booking Details : </label>
+                <div className="flex justify-center">
+                    <BookingDetails booking_info={location.state.booking_data}/>
+                </div>
+            </div>
             <div className="flex justify-center">
+                <label className="flex justify-center">Add on:</label>
                 <button onClick={() => goto("/add_on/select_seat")} className='bg-gray-100 w-1/6 h-1/5 rounded-3xl m-5'>
                     <div className="flex justify-center">
                         <img src="/src/assets/seat_icon.png"/>

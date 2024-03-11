@@ -16,10 +16,23 @@
   color: white;
 }
 
+.passenger-button {
+  display: grid;
+  gap: 10px;
+  width: 100px;
+  height: 50px;
+}
+
 .seat-map {
   display: grid;
   grid-template-columns: repeat(2, 40px) 100px repeat(3, 40px);
   gap: 15px;
+}
+
+.select-luggage {
+  display: grid;
+  grid-template-columns: repeat(4, 160px);
+  gap: 5px;
 }
 
 .seat-map:before {
@@ -53,14 +66,19 @@
 }
 
 .selected {
-  background-color: #5cb85c;
+  background-color: #fc4433;
   color: #fff;
 }
 
 .reserved {
-  background-color: #d9534f;
+  background-color: #545454;
   color: #fff;
   cursor: not-allowed;
+}
+
+.unavailable {
+  color: #fff;
+  background-color: #7ce655dc;
 }
 
 h3 {

@@ -15,7 +15,7 @@ function Nav() {
 
   return (
     <nav>
-      <div className="bg-red-600 flex justify-between">
+      <div className="bg-red-500 flex justify-between">
         <div>
           <img src="/src/assets/melt-logo.svg" className="w-10 mx-5 my-2"/>
         </div>

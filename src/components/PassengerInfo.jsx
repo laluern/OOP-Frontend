@@ -81,5 +81,5 @@ function PassengersInfo(){
     </div>
     )
 }
-
-export default PassengersInfo;
+    
+    export default PassengersInfo;
