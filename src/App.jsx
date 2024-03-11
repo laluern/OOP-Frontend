@@ -16,6 +16,7 @@ import SelectLuggage from './pages/SelectLuggage';
 import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
+import Account from './pages/Account';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -71,6 +72,10 @@ function App() {
         <Route
           path="/payment/mobile"
           element={<PayByMobile/>}
+        />
+        <Route
+          path="/account"
+          element={<Account/>}
         />
       </Routes>
     </BrowserRouter>

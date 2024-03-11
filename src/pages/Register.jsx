@@ -33,13 +33,14 @@ function Register() {
         try {
             const response = await axios.post("http://localhost:8000/register", data)
             console.log(response.data)
-            setResult(response.data)
+            setResult(response.data.status)
+            const responseMessageString = JSON.stringify(response.data.message)
+            alert(responseMessageString)
         }
         catch(error) {
             alert("Failed")
             return null
         }
-        navigate("/home")
     }
 
     const handleFirstNameChange = (e) => {

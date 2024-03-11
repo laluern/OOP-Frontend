@@ -23,7 +23,7 @@ function Nav() {
         <ul className="text-white flex flex-row gap-4 m-3">
             <li><a href="/home" onClick={handleHome}>HOME</a></li>
             <li><a href="/search/flights" onClick={handleSearch}>SEARCH</a></li>
-            <li><a href="#">ACCOUNT</a></li>
+            <li><a href="/account">ACCOUNT</a></li>
         </ul>
       </div>
     </nav>

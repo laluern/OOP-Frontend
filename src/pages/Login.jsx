@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-import Register from './Register';
+import { useCookies } from 'react-cookie';
 import '../App.css'
 import axios from 'axios';
 import { FaUser, FaLock } from "react-icons/fa";
@@ -10,6 +10,8 @@ function Login() {
   const [password, setPassword] = useState();
   const [loginResult, setLoginResult] = useState(null);
 
+  const [cookies, setCookie] = useCookies(['user']);
+
   useEffect(()=> {
     console.log(email, password)
   }, [email, password])
@@ -17,13 +19,19 @@ function Login() {
   const navigate = useNavigate()
 
   const sendData = async () => {
-    const data = {
+    const userData = {
       email: email,
       password: password
     }
+
     try{
-      const response = await axios.post("http://127.0.0.1:8000/login", data)
-      setLoginResult(response.data)
+      const response = await axios.post("http://127.0.0.1:8000/login", userData)
+      console.log(response.data)
+      setLoginResult(response.data.status)
+      setCookie('user', response.data.user , { path: '/' });
+      const responseMessageString = JSON.stringify(response.data.message)
+      alert(responseMessageString)
+      
     }
     catch(error) {
       alert("Login failed, Please try again");
