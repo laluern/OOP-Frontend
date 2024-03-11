@@ -11,8 +11,6 @@ import Register from './pages/Register';
 import SearchFlights from './pages/SearchFlights';
 import SearchResult from './pages/SearchResult';
 import AddOn from './pages/AddOn';
-import SelectSeat from './pages/SelectSeat';
-import SelectLuggage from './pages/SelectLuggage';
 import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
@@ -53,14 +51,6 @@ function App() {
           path="add_on"
           element={<AddOn/>}
         />          
-        <Route
-          path="add_on/select_seat"
-          element={<SelectSeat/>}
-        />
-        <Route
-          path="add_on/select_luggage"
-          element={<SelectLuggage/>}
-        />
         <Route
           path="fill_info"
           element={<FillInfo/>}
