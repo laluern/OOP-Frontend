@@ -30,14 +30,6 @@ function SearchFlights() {
       const total_passenger = data.total_passenger
       await axios.post("http://localhost:8000/search_flight", data)
       // const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
-    
-    // setResult(response.data)
-
-    // const params = new URLSearchParams()
-    // params.append("departure", data.departure)
-    // params.append("destination", data.destination)
-    // params.append("departureDate", data.departure_date)
-
     navigate("/search/flights_results", {
       state: {
         total_passenger: total_passenger

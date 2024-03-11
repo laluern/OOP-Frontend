@@ -16,11 +16,11 @@ import SelectLuggage from './pages/SelectLuggage';
 import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import Account from './pages/Account';
-=======
+// =======
 import FillInfo from './pages/FillInfo';
->>>>>>> fb54e9c26843b250c90893941673e30b42ced558
+// >>>>>>> fb54e9c26843b250c90893941673e30b42ced558
 
 function App() {
   const [count, setCount] = useState(0)
