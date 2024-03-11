@@ -26,16 +26,26 @@ function Account() {
   return (
     <div>
         <Nav/>
-        {/* <h1>Welcome {cookies.user._User__user_id}</h1> */}
         {accountData && (
           <div>
             <p>Email : {accountData[0]}</p>
             <p>User Id : {accountData[1]}</p>
-            <p>Booking No : {accountData[2][0][0]}</p>
-            <p>Departure : {accountData[2][0][1]}</p>
-            <p>Destination : {accountData[2][0][2]}</p>
-            <p>Departure Date Time: {formatDate(accountData[2][0][3])}</p>
-            <p>Departure Date Time: {formatDate(accountData[2][0][4])}</p>
+            {accountData[2].map((booking, index) => (
+              <div key={index}>
+                <p>Booking No : {booking[0]}</p>
+                <p>Departure : {booking[1]}</p>
+                <p>Destination : {booking[2]}</p>
+                <p>Departure Date Time: {formatDate(booking[3])}</p>
+                <p>Arrival Date Time: {formatDate(booking[4])}</p>
+              </div>
+            ))}
+            {/* <div>
+              <p>Booking No : {accountData[2][0][0]}</p>
+              <p>Departure : {accountData[2][0][1]}</p>
+              <p>Destination : {accountData[2][0][2]}</p>
+              <p>Departure Date Time: {formatDate(accountData[2][0][3])}</p>
+              <p>Departure Date Time: {formatDate(accountData[2][0][4])}</p>
+            </div>  */}
           </div>
         )}
     </div>
