@@ -82,9 +82,10 @@ function Register() {
         </video>
         {
             !result ? 
-            <div className=" backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
+            // box
+            <div className="backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
                 
-                <h1 className="text-gray-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
+                <h1 className="text-slate-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
 
                 <div className="mt-8 mb-4">
 
@@ -101,11 +102,6 @@ function Register() {
                     <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
                         <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
                         <MdOutlineMailOutline className="register-icon col-span-2 align-middle h-full translate-x-5"/>
-                    </div>
-
-                    <div>
-                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} minLength="8" required/>
-                        <MdLockOutline className="register-icon"/>
                     </div>
 
                     <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
