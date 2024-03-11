@@ -4,12 +4,11 @@ import { useLocation } from "react-router-dom";
 import { MdLuggage , MdNoLuggage} from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
-function SelectAddOn() {
+function SelectAddOn({booking_data, total_passenger}) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const flight_instance_no = location.state.booking_data.flight_instance_no;
-  const total_passenger = location.state.total_passenger
+  const flight_instance_no = booking_data.flight_instance_no;
 
   const weight_packages = [15, 20, 25, 30, 40, 50, 60];
 
