@@ -77,44 +77,49 @@ function Register() {
 
   return (
     <div className="flex flex-colflex justify-center items-center min-h-screen">
+        <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
+            <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
+        </video>
         {
             !result ? 
-            <div className="bg-red-500 p-7 rounded-xl">
-                <h1>Register</h1>
-    
-                <div>
-                    <input type="text" placeholder="First name" value={firstName} onChange={handleFirstNameChange} required/>
-                    <LuUser className="register-icon"/>
+            <div className="text-red-500 backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
+                
+                <h1 className="text-gray-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
+                <div className="mt-8 mb-3">
+                    <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
+                        <input type="text" placeholder="First name" value={firstName} onChange={handleFirstNameChange} className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
+                        <LuUser className="register-icon col-span-1 align-middle h-full"/>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
+                        <LuUser className="register-icon"/>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} required/>
+                        <MdOutlineMailOutline className="register-icon"/>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} required/>
+                        <MdLockOutline className="register-icon"/>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} required/>
+                        <LuPhone className="register-icon"/>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Address" value={address} onChange={handleAddressChange} required/>
+                        <LuHome className="register-icon"/>  
+                    </div>
+                    <div>
+                        <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
+                        <LuCalendarDays className="register-icon"/>
+                    </div>
+                    <button className="bg-green-400" onClick={sendData}>Register</button>
                 </div>
+                </div> :
                 <div>
-                    <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
-                    <LuUser className="register-icon"/>
+                    <button onClick={handleRegister}>home</button>
                 </div>
-                <div>
-                    <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} required/>
-                    <MdOutlineMailOutline className="register-icon"/>
-                </div>
-                <div>
-                    <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} required/>
-                    <MdLockOutline className="register-icon"/>
-                </div>
-                <div>
-                    <input type="text" placeholder="Phone number" value={phoneNumber} maxlength="10" onChange={handlePhoneNumberChange} required/>
-                    <LuPhone className="register-icon"/>
-                </div>
-                <div>
-                    <input type="text" placeholder="Address" value={address} onChange={handleAddressChange} required/>
-                    <LuHome className="register-icon"/>  
-                </div>
-                <div>
-                    <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
-                    <LuCalendarDays className="register-icon"/>
-                </div>
-                <button className="bg-green-400" onClick={sendData}>Register</button>
-            </div> :
-            <div>
-                <button onClick={handleRegister}>home</button>
-            </div>
         }
     </div>
   )

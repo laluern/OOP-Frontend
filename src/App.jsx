@@ -16,7 +16,11 @@ import SelectLuggage from './pages/SelectLuggage';
 import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
+<<<<<<< HEAD
 import Account from './pages/Account';
+=======
+import FillInfo from './pages/FillInfo';
+>>>>>>> fb54e9c26843b250c90893941673e30b42ced558
 
 function App() {
   const [count, setCount] = useState(0)
@@ -56,6 +60,10 @@ function App() {
         <Route
           path="add_on/select_luggage"
           element={<SelectLuggage/>}
+        />
+        <Route
+          path="fill_info"
+          element={<FillInfo/>}
         />
         <Route
           path="/register"
