@@ -58,58 +58,74 @@ function SearchFlights() {
   };
 
   return (
+    // navbar
     <div>
       <Nav />
+      {/* background */}
+      <div>
+      <img src="/src/assets/MeltPlane.svg" className="absolute z-[-1]"/>
+      </div>
+    
       {
         // !result ? (
         (
           <div className="">
-            <div className="antialiased flex justify-center items-center min-h-screen">
-              <div className="bg-red-500 p-10 rounded-xl">
-                {/* departure */}
-                <div className="flex flex-col">
-                  <label for="departure" className="text-white">Departure</label>
-                  <select value={departure} onChange={handleDepartureChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
-                    {destination && (
+            
+            <div className="flex justify-center items-center min-h-screen">
+              {/* box */}
+              <div className=" backdrop-blur-xl shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
+                <div className='mb-4'>
+
+                  {/* departure */}
+                  <div className="flex flex-col">
+                    <label for="departure" className="text-slate-50 text-xl italic">Departure</label>
+                    <select value={departure} onChange={handleDepartureChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
+                      {destination && (
+                        <>
+                          <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiang Mai</option>
+                          <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hat Yai</option>
+                          <option value="Suvarnabhumi" disabled={destination === "Suvarnabhumi"}>Suvarnabhumi</option>
+                          <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khon Kaen</option>
+                        </>
+                      )}
+                    </select>
+                  </div>
+
+                  {/* destination */}
+                  <div className="flex flex-col">
+                  <label for="destination" className="text-slate-50 text-xl italic mt-2">Destination</label>
+                  <select value={destination} onChange={handleDestinationChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
+                    {departure && (
                       <>
-                        <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiang Mai</option>
-                        <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hat Yai</option>
-                        <option value="Suvarnabhumi" disabled={destination === "Suvarnabhumi"}>Suvarnabhumi</option>
-                        <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khon Kaen</option>
+                        <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiang Mai</option>
+                        <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hat Yai</option>
+                        <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>
+                        <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khon Kaen</option>
                       </>
                     )}
-                  </select>
-                </div>
-                {/* destination */}
-                <div className="flex flex-col">
-                <label for="destination" className="text-white">Destination</label>
-                <select value={destination} onChange={handleDestinationChange} className="text-base p-3 m-1 rounded box-border w-5/6" required>
-                  {departure && (
-                    <>
-                      <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiang Mai</option>
-                      <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hat Yai</option>
-                      <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>
-                      <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khon Kaen</option>
-                    </>
-                  )}
-                </select>  
-                </div>
-                {/* passenger */}
-                <div className="flex flex-col">
-                  <label for="passengers" className="text-white">Passengers</label>
-                  <input value={passenger} onChange={handlePassenger} type="number" min="1" max="6" className="mx-1.5 p-2.5 m-2 rounded w-5/6" required />
-                </div>
-                {/* date */}
-                <div className="flex flex-col">
-                  <label for="date" className="text-white">Date</label>
-                  <input onChange={handleDepartureDateChange} value={departureDate} type="date" name="departure_date" id="departure_date" className="p-2 m-1 rounded w-5/6" required />
-                </div>
-                {/* promocode */}
-                <div className="flex flex-col">
-                  <label for="promocode" className="m-0.5 text-white">Promocode</label>
-                  <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="p-2 rounded-md mx-1.5 w-5/6" />
-                </div>
-                <button onClick={sendData} className="bg-white mt-6 w-1/2 h-11 mx-12 rounded-2xl hover:bg-gray-300">Search</button>
+                  </select>  
+                  </div>
+                  
+                  {/* passenger */}
+                  <div className="flex flex-col">
+                    <label for="passengers" className="text-slate-50 text-xl italic mt-2">Passengers</label>
+                    <input value={passenger} onChange={handlePassenger} type="number" min="1" max="6" className="text-base p-3 ps-4 mb-1 mt-2 rounded-xl box-border w-16 h-10" required />
+                  </div>
+
+                  {/* date */}
+                  <div className="flex flex-col">
+                    <label for="date" className="text-slate-50 text-xl italic mt-2">Date</label>
+                    <input onChange={handleDepartureDateChange} value={departureDate} type="date" name="departure_date" id="departure_date" className="text-base p-3 ps-4 mb-1 mt-2 rounded-xl box-border w-11/12" required />
+                  </div>
+
+                  {/* promocode */}
+                  <div className="flex flex-col">
+                    <label for="promocode" className="text-md italic mt-4">Promocode</label>
+                    <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-1 mb-1 mt-2 rounded-xl box-border w-11/12" />
+                  </div>
+                 </div>
+
+                <button onClick={sendData} className="transition-colors duration-200 bg-red-500 text-white w-20 h-11 translate-x-48 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-600 hover:text-neutral-50">Search</button>
               </div>
             </div>
           </div>

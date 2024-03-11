@@ -44,38 +44,42 @@ function PassengersInfo(){
       };
     
     return (
-    <div className="passengers-info">
-        <div className='flex justify-center'>
-            <input type="text" placeholder="First name" value={firstname} onChange={handleFirstnameChange} required/>
-            <LuUser className="register-icon"/>
+    <div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" placeholder="" value={firstname} onChange={handleFirstnameChange} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" placeholder="" value={surname} onChange={handleSurnameChange} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+                <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+            </div>
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
-            <LuUser className="register-icon"/>
+        <div class="relative z-0 w-full mb-5 group">
+            <input type="text" placeholder="" value={citizenID} onChange={handleCitizenIDChange} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Citizen ID</label>
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="citizen ID" value={phoneNumber} onChange={handleCitizenIDChange} required/>
-            <LuPhone className="register-icon"/>
+        <div class="relative z-0 w-full mb-5 group">
+            <input type="text" placeholder="" value={phoneNumber} onChange={handlePhoneNumberChange} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} required/>
-            <LuPhone className="register-icon"/>
+        <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-5 group py-4">
+            <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} className="col-span-1 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800" required/>
         </div>
-        <div className='flex justify-center'>
-            <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
+        <div class="relative z-0 w-full mb-5 gap-10 py-2">
+            <div>
+                <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={() => handleGenderChange('male')}/>
+                <label for="male">Male</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={() => handleGenderChange('female')}/>
+                <label for="female">Female</label>
+            </div>
         </div>
-        <div className="gender-selection">
-        <label>
-          <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={() => handleGenderChange('male')} />
-          Male
-        </label>
-        <label>
-          <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={() => handleGenderChange('female')} />
-          Female
-        </label>
-      </div>
+        </div>
     </div>
     )
 }
-
-export default PassengersInfo;
+    
+    export default PassengersInfo;
