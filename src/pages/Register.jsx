@@ -99,7 +99,7 @@ function Register() {
                         <MdOutlineMailOutline className="register-icon"/>
                     </div>
                     <div>
-                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} required/>
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} minLength="8" required/>
                         <MdLockOutline className="register-icon"/>
                     </div>
                     <div>
