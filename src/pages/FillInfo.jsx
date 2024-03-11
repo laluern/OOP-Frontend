@@ -16,7 +16,7 @@ function FillInfo() {
             <PassengersInfo/>
         </div>
         <div className="flex justify-center">
-                    <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => goto("/home")}>Continue</button>
+                    <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => goto("/payment")}>Continue</button>
         </div>
     </div>
   );

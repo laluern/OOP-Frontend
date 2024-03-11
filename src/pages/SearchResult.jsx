@@ -11,8 +11,6 @@ function SearchResult() {
   const [selectedSort, setSelectedSort] = useState('Cheapest');
   const location = useLocation();
 
-  console.log(location.state.total_passenger)
-
   useEffect(() => {
     const fetchData = async () => {
         const sort = selectedSort;
@@ -37,7 +35,7 @@ function SearchResult() {
       </div>
       {Object.keys(flightList).map(flightKey => (
         <div className="flex justify-center" key={flightKey}>
-          <FlightDetails flight_info={flightList[flightKey]} />
+          <FlightDetails flight_info={flightList[flightKey]} total_passenger={location.state.total_passenger}/>
         </div>
       ))}
     </div>
