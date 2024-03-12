@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import PersonalInfo from '../components/PersonalInfo'
+import { useCookies } from 'react-cookie'
+import Nav from '../components/Nav'
+import { Navigate, useNavigate } from 'react-router-dom'
 import ViewBooking from '../components/ViewBooking'
 
 function Account() {
+  const [cookies, setCookie] = useCookies(['user'])
+
+  const navigate = useNavigate()
+
+  function logOut() {
+    setCookie('user', null , { path: '/' })
+    navigate("/login")
+  }
+
   return (
     <div>
-      {/* <PersonalInfo/> */}
+      <Nav/>
+      <div>Welcome : {cookies.user._User__user_id}</div>
       <ViewBooking/>
+      <button onClick={logOut} className="bg-red-500 text-white">Log out</button>
     </div>
   )
 }
