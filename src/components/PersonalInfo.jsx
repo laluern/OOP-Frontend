@@ -30,6 +30,7 @@ function PersonalInfo() {
                 <div className="bg-gray-100 rounded p-4">
                     {personalInfo && (
                         <div>
+                            <p className="mb-2">User ID: {cookies.user._User__user_id}</p>
                             <p className="mb-2">Full Name: {personalInfo.full_name}</p>
                             <p className="mb-2">Email: {personalInfo.email}</p>
                             <p className="mb-2">Phone Number: {personalInfo.phone_number}</p>
