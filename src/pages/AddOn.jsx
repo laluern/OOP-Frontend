@@ -15,7 +15,7 @@ function AddOn(){
                     <BookingDetails booking_info={location.state.booking_data}/>
                 </div>
             </div>
-            
+
             <div className="flex justify-center">
                 <SelectAddOn booking_data={location.state.booking_data} total_passenger={location.state.total_passenger} p/>
             </div>
