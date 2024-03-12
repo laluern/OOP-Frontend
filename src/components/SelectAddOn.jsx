@@ -3,10 +3,13 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { MdLuggage , MdNoLuggage} from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'
 
 function SelectAddOn({booking_data, total_passenger}) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(['user']);
+  const userId = cookies.user._User__user_id;
 
   const flight_instance_no = booking_data.flight_instance_no;
 
@@ -16,6 +19,31 @@ function SelectAddOn({booking_data, total_passenger}) {
   const [selectedSeats, setSelectedSeats] = useState(Array.from({ length: total_passenger }, () => 0));
   const [weights, setWeights] = useState(Array.from({ length: total_passenger }, () => 0));
   const [currentPassenger, setCurrentPassenger] = useState(1);
+
+  const booking = location.state.booking_data
+
+  const CreateData = async (route) => {
+    try {
+      const userId = cookies.user._User__user_id;
+      const response = await axios.post(`http://localhost:8000/${userId}/${flight_instance_no}/create_booking`);
+
+      const goto = (route) => {
+        navigate(route, {
+            state: {
+              booking_data: booking,
+              passenger_data: PassengerAddOn(),
+              booking_id: response.data
+            }
+          })
+      };
+
+      goto(route);
+
+    } catch (error) {
+      alert("Failed");
+      return null;
+    }
+  }
 
   const check_seat = (route) => {
 
@@ -27,17 +55,10 @@ function SelectAddOn({booking_data, total_passenger}) {
         return;
         }
       }
-    goto(route)
+
+    CreateData(route)
     }
 
-  const goto = (route) => {
-    navigate(route, {
-        state: {
-          booking_data: location.state.booking_data,
-          passenger_data: PassengerAddOn()
-        }
-      })
-  };
 
   const PassengerAddOn = () => {
     const passengerAddOn = {};
@@ -136,7 +157,7 @@ function SelectAddOn({booking_data, total_passenger}) {
       <div className="select-luggage">
        <button
           onClick={() => handleButtonClick(0)}
-          className={`flex justify-center flex-col items-center bg-gray-100 w-24 h-24 rounded-3xl m-5 ${
+          className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
             weights[currentPassenger - 1] === 0 ? "bg-red-500 text-white" : ""
           }`}
         >
@@ -148,7 +169,7 @@ function SelectAddOn({booking_data, total_passenger}) {
         <button
           key={packageWeight}
           onClick={() => handleButtonClick(packageWeight)}
-          className={`flex justify-center flex-col items-center bg-gray-100 w-24 h-24 rounded-3xl m-5 ${
+          className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
             weights[currentPassenger - 1] === packageWeight ? "bg-red-500 text-white" : ""
           }`}
         >
