@@ -19,20 +19,20 @@
 .passenger-button {
   display: grid;
   gap: 10px;
-  width: 100px;
+  width: 150px;
   height: 50px;
 }
 
 .seat-map {
   display: grid;
   grid-template-columns: repeat(2, 40px) 100px repeat(3, 40px);
-  gap: 15px;
+  gap: 10px;
 }
 
 .select-luggage {
   display: grid;
-  grid-template-columns: repeat(4, 160px);
-  gap: 5px;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
 }
 
 .seat-map:before {
@@ -79,6 +79,7 @@
 .unavailable {
   color: #fff;
   background-color: #7ce655dc;
+  cursor: not-allowed;
 }
 
 h3 {

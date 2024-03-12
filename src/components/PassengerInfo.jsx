@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 import { LuUser, LuPhone, LuCalendarDays } from "react-icons/lu";
-function PassengersInfo(){
+
+function PassengersInfo({booking_data, passenger_data}){
 
     const [firstname, setFirstname] = useState();
     const [surname, setSurname] = useState();
@@ -8,6 +9,8 @@ function PassengersInfo(){
     const [phoneNumber, setPhoneNumber] = useState();
     const [birthDate, setBirthDate] = useState();
     const [gender, setGender] = useState('');
+
+    const [currentPassenger, setCurrentPassenger] = useState(1);
 
     const data = {
         full_name: firstname + " " + surname,
@@ -42,9 +45,27 @@ function PassengersInfo(){
     const handleGenderChange = (selectedGender) => {
         setGender(selectedGender);
       };
+
+    const handlePassengerChange = (passenger) => {
+        setCurrentPassenger(passenger);
+      };
     
     return (
-    <div>
+    <div className="flex justify-center">
+        <div className="passenger-button">
+          {Array.from({ length: Object.keys(passenger_data).length }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePassengerChange(index + 1)}
+              className={currentPassenger === index + 1 ? "selected" : ""}
+            >
+              <p className="font-bold">
+              Passenger {index + 1}
+              </p>
+            </button>
+          ))}
+        </div>
+        <div>
         
         <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-5 group">
@@ -79,6 +100,10 @@ function PassengersInfo(){
             </div>
         </div>
         </div>
+            <div>
+                <button className="transition-colors duration-200 bg-red-500 text-white w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-600 hover:text-neutral-50" onClick={() => goto("/home")}>Continue</button>
+            </div>
+            </div>
     </div>
     )
 }
