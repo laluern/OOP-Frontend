@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
 import { LuUser, LuPhone, LuCalendarDays } from "react-icons/lu";
-function PassengersInfo(){
+
+function PassengersInfo({booking_data, passenger_data}){
 
     const [firstname, setFirstname] = useState();
     const [surname, setSurname] = useState();
@@ -8,6 +9,8 @@ function PassengersInfo(){
     const [phoneNumber, setPhoneNumber] = useState();
     const [birthDate, setBirthDate] = useState();
     const [gender, setGender] = useState('');
+
+    const [currentPassenger, setCurrentPassenger] = useState(1);
 
     const data = {
         full_name: firstname + " " + surname,
@@ -42,40 +45,67 @@ function PassengersInfo(){
     const handleGenderChange = (selectedGender) => {
         setGender(selectedGender);
       };
+
+    const handlePassengerChange = (passenger) => {
+        setCurrentPassenger(passenger);
+      };
     
     return (
-    <div className="passengers-info">
-        <div className='flex justify-center'>
-            <input type="text" placeholder="First name" value={firstname} onChange={handleFirstnameChange} required/>
-            <LuUser className="register-icon"/>
+    <div className="flex justify-center">
+        <div className="passenger-button">
+          {Array.from({ length: Object.keys(passenger_data).length }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePassengerChange(index + 1)}
+              className={currentPassenger === index + 1 ? "selected" : ""}
+            >
+              <p className="font-bold">
+              Passenger {index + 1}
+              </p>
+            </button>
+          ))}
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="Surname" value={surname} onChange={handleSurnameChange} required/>
-            <LuUser className="register-icon"/>
+        <div>
+        
+        <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 w-full mb-5 group">
+                <input type="text" placeholder="" value={firstname} onChange={handleFirstnameChange} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+                <label for="floating_first_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+            </div>
+            <div className="relative z-0 w-full mb-5 group">
+                <input type="text" placeholder="" value={surname} onChange={handleSurnameChange} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+                <label for="floating_last_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+            </div>
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="citizen ID" value={citizenID} onChange={handleCitizenIDChange} maxLength="13" required/>
-            <LuPhone className="register-icon"/>
+        <div className="relative z-0 w-full mb-5 group">
+            <input type="text" placeholder="" value={citizenID} onChange={handleCitizenIDChange} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Citizen ID</label>
         </div>
-        <div className='flex justify-center'>
-            <input type="text" placeholder="Phone number" value={phoneNumber} onChange={handlePhoneNumberChange} maxLength="10" required/>
-            <LuPhone className="register-icon"/>
+        <div className="relative z-0 w-full mb-5 group">
+            <input type="text" placeholder="" value={phoneNumber} onChange={handlePhoneNumberChange} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
         </div>
-        <div className='flex justify-center'>
-            <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} required/>
+        <div className="grid md:grid-cols-2 md:gap-6">
+        <div className="relative z-0 w-full mb-5 group py-4">
+            <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} classNameName="col-span-1 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800" required/>
         </div>
-        <div className="gender-selection">
-        <label>
-          <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={() => handleGenderChange('male')} />
-          Male
-        </label>
-        <label>
-          <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={() => handleGenderChange('female')} />
-          Female
-        </label>
-      </div>
+        <div className="relative z-0 w-full mb-5 gap-10 py-2">
+            <div>
+                <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={() => handleGenderChange('male')}/>
+                <label for="male">Male</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={() => handleGenderChange('female')}/>
+                <label for="female">Female</label>
+            </div>
+        </div>
+        </div>
+            <div>
+                <button className="transition-colors duration-200 bg-red-500 text-white w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-600 hover:text-neutral-50" onClick={() => goto("/home")}>Continue</button>
+            </div>
+            </div>
     </div>
     )
 }
-
-export default PassengersInfo;
+    
+    export default PassengersInfo;

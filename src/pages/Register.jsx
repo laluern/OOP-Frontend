@@ -75,7 +75,7 @@ function Register() {
         navigate("/home")
     }
 
-  return (
+return (
     <div className="flex flex-colflex justify-center items-center min-h-screen">
         <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
             <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
@@ -101,6 +101,11 @@ function Register() {
                         <MdOutlineMailOutline className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
 
+                    <div>
+                        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} minLength="8" required/>
+                        <MdLockOutline className="register-icon"/>
+                    </div>
+
                     <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
                         <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
                         <MdLockOutline className="register-icon col-span-2 align-middle h-full translate-x-5"/>
@@ -116,7 +121,7 @@ function Register() {
                     <div className="grid grid-col-11 gap-4">
                         <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} className="col-span-9 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800"required/>
                     </div>
-                    </div>
+                </div>
 
                     <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Register</button>
                 </div> :
