@@ -78,7 +78,7 @@ function SearchFlights() {
 
                   {/* departure */}
                   <div className="flex flex-col">
-                    <label for="departure" className="text-slate-50 text-xl italic">Departure</label>
+                    <label htmlFor="departure" className="text-slate-50 text-xl italic">Departure</label>
                     <select value={departure} onChange={handleDepartureChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
                       {destination && (
                         <>
@@ -93,7 +93,7 @@ function SearchFlights() {
 
                   {/* destination */}
                   <div className="flex flex-col">
-                  <label for="destination" className="text-slate-50 text-xl italic mt-2">Destination</label>
+                  <label htmlFor="destination" className="text-slate-50 text-xl italic mt-2">Destination</label>
                   <select value={destination} onChange={handleDestinationChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
                     {departure && (
                       <>
@@ -108,19 +108,19 @@ function SearchFlights() {
                   
                   {/* passenger */}
                   <div className="flex flex-col">
-                    <label for="passengers" className="text-slate-50 text-xl italic mt-2">Passengers</label>
+                    <label htmlFor="passengers" className="text-slate-50 text-xl italic mt-2">Passengers</label>
                     <input value={passenger} onChange={handlePassenger} type="number" min="1" max="6" className="text-base p-3 ps-4 mb-1 mt-2 rounded-xl box-border w-16 h-10" required />
                   </div>
 
                   {/* date */}
                   <div className="flex flex-col">
-                    <label for="date" className="text-slate-50 text-xl italic mt-2">Date</label>
+                    <label htmlFor="date" className="text-slate-50 text-xl italic mt-2">Date</label>
                     <input onChange={handleDepartureDateChange} value={departureDate} type="date" name="departure_date" id="departure_date" className="text-base p-3 ps-4 mb-1 mt-2 rounded-xl box-border w-11/12" required />
                   </div>
 
                   {/* promocode */}
                   <div className="flex flex-col">
-                    <label for="promocode" className="text-md italic mt-4">Promocode</label>
+                    <label htmlFor="promocode" className="text-md italic mt-4">Promocode</label>
                     <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-1 mb-1 mt-2 rounded-xl box-border w-11/12" />
                   </div>
                  </div>

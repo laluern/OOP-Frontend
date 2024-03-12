@@ -52,7 +52,7 @@ function PayByCard() {
       navigate("/account")
     }
     catch(error) {
-      alert("Failed")
+      alert("Error" + error.name)
     }
   }
 

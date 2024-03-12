@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 function PriceSummary() {
     const location = useLocation()
+    
     const booking_no = String(location.state.booking_id)
     const [detail, setDetail] = useState();
     const [cookies] = useCookies(['user']);
