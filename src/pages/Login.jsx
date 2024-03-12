@@ -84,7 +84,6 @@ function Login() {
           <div className="text-center mt-4 text-sm">
             <p>Don't have an account? <a href="" className="text-neutral-50 font-bold hover:underline hover:text-red-500 italic" onClick={handleRegister}>Sign up!</a></p>
           </div>
-
         </div> : <button onClick={handleLogin}>home</button>
       }
     </div>

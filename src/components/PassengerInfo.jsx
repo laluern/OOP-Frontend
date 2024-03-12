@@ -35,6 +35,7 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
         }
           console.log(data)
           await axios.post(`http://localhost:8000/${userId}/${booking_id}/${flight_instance_no}/fill_info`, data)
+
       }
     }
 
@@ -57,6 +58,7 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
         navigate(route, {
             state: {
               booking_data: booking_data,
+              booking_id: booking_id,
               passenger_data: PassengerInfo()
             }
           })
