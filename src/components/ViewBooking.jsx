@@ -37,6 +37,7 @@ function ViewBooking() {
                     <div>{Object.values(myBooking)[0].departure_time}</div>
                     <div>{Object.values(myBooking)[0].destination}</div>
                     <div>{Object.values(myBooking)[0].arriving_time}</div> */}
+                   
                 </div>
             </div> 
         </div>
