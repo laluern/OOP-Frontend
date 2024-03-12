@@ -9,6 +9,7 @@ function SelectAddOn({booking_data, total_passenger}) {
   const location = useLocation();
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(['user']);
+  const [showTooltip, setShowTooltip] = useState(false);
   const userId = cookies.user._User__user_id;
 
   const flight_instance_no = booking_data.flight_instance_no;
@@ -16,9 +17,10 @@ function SelectAddOn({booking_data, total_passenger}) {
   const weight_packages = [15, 20, 25, 30, 40, 50, 60];
 
   const [SeatData, setSeatData] = useState([]);
-  const [selectedSeats, setSelectedSeats] = useState(Array.from({ length: total_passenger }, () => 0));
+  const [selectedSeats, setSelectedSeats] = useState(Array.from({ length: total_passenger }, () => "-"));
   const [weights, setWeights] = useState(Array.from({ length: total_passenger }, () => 0));
   const [currentPassenger, setCurrentPassenger] = useState(1);
+  const [show, setShow] = useState(true);
 
   const booking = location.state.booking_data
 
@@ -73,6 +75,38 @@ function SelectAddOn({booking_data, total_passenger}) {
     return passengerAddOn;
   };
 
+  const total_price = () => {
+    let seat_price = 0;
+    let seat_count = 0;
+    let luggage_price = 0;
+    let luggage_count = 0;
+    console.log({length: selectedSeats})
+
+      Object.values(selectedSeats).forEach((seat) => {
+
+        if (seat !== "-"){
+          seat_price += SeatData[seat]["price"];
+          seat_count++
+        }
+      })
+
+        Object.values(weights).forEach((weight) => {
+          luggage_price += weight * 30;
+          if (weight !== 0){
+            luggage_count++
+          }
+      })
+
+    return (
+      <div className="flex justify-center">
+        {`All Seat Price (x${seat_count}): ${seat_price.toLocaleString()}`}<br/>
+        {`All Luggage Price (x${luggage_count}): ${luggage_price.toLocaleString()}`}<br/>
+        {`Total Price : ${(seat_price + luggage_price).toLocaleString()}`}
+      </div>
+    );
+
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -95,10 +129,11 @@ function SelectAddOn({booking_data, total_passenger}) {
       selectedSeats[currentPassenger] !== seat;
 
     if (!isSeatReserved && !isSeatSelectedByAnother) {
-      setSelectedSeats((prevSelectedSeats) => ({
-        ...prevSelectedSeats,
-        [currentPassenger - 1]: seat,
-      }));
+      setSelectedSeats((prevWeights) => {
+        const newWeights = [...prevWeights];
+        newWeights[currentPassenger - 1] = seat;
+        return newWeights;
+      });
     }
   };
 
@@ -114,30 +149,39 @@ function SelectAddOn({booking_data, total_passenger}) {
     setCurrentPassenger(passenger);
   };
 
+  const handleToggle = () => {
+    setShow(!show);
+  };
+
   return (
-    <div className="flex justify-center gap-6">
-      <div className="passenger-button">
-          {Array.from({ length: total_passenger }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePassengerChange(index + 1)}
-              className={currentPassenger === index + 1 ? "selected" : ""}
-            >
-              <p className="font-bold">
-              Passenger {index + 1}
-              </p>
-              <p>
-              Seat : {selectedSeats[index] ? selectedSeats[index] : "-"}
-              </p>
-              <p>
-              {weights[index] ? ` Luggage : ${weights[index]} kg` : "No Luggage"} 
-              </p>
-            </button>
-          ))}
-        </div>
-      <div className="seat-map">
-        {Object.keys(SeatData).map((seat) => (
-          <div
+    <div>
+      <div className="flex justify-center gap-6">
+        <div className="passenger-button">
+          <div className="checkbox flex items-center justify-center bg-gray-200">
+          <span className="mr-2">Show Price</span>
+            <input type="checkbox" id="cbx-46" className="w-4 h-4" onClick={handleToggle}/>
+          </div>
+            {Array.from({ length: total_passenger }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePassengerChange(index + 1)}
+                className={currentPassenger === index + 1 ? "selected" : ""}
+              >
+                <p className="font-bold">
+                Passenger {index + 1}
+                </p>
+                <p>
+                Seat : {selectedSeats[index] ? selectedSeats[index] : "-"}
+                </p>
+                <p>
+                {weights[index] ? ` Luggage : ${weights[index]} kg` : "No Luggage"} 
+                </p>
+              </button>
+            ))}
+          </div>
+        <div className="seat-map">
+          {Object.keys(SeatData).map((seat) => (
+            <div
             key={seat}
             className={`seat ${
               SeatData[seat].is_reserved ? "reserved" : ""
@@ -147,41 +191,52 @@ function SelectAddOn({booking_data, total_passenger}) {
                   ? "selected"
                   : "unavailable"
                 : ""
-            }`}
-            onClick={() => SeatClick(seat)}
-          >
-            {seat}
+            } ${SeatData[seat].seat_type === "hot_seat" ? "hot_seat" : ""} ${show ? "show-seat" : "show-price"}`}
+              onClick={() => SeatClick(seat)}
+            >
+            <div className="tooltip">
+            {show ? (seat) : `${seat} ${(SeatData[seat].price.toLocaleString())}`}
+            </div>
+            </div>
+          ))}
           </div>
+        <div>
+        <div className="flex justify-center font-bold">**30 THB / 1 kg**</div>
+        <div className="select-luggage">
+        <button
+            onClick={() => handleButtonClick(0)}
+            className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
+              weights[currentPassenger - 1] === 0 ? "bg-red-500 text-white" : ""
+            }`}
+          >
+            <MdNoLuggage className="text-3xl" />
+            <p className="font-medium">No Luggage</p>
+            <p className="font-medium">0 THB</p>
+          </button>
+        {weight_packages.map((packageWeight) => (
+          <button
+            key={packageWeight}
+            onClick={() => handleButtonClick(packageWeight)}
+            className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
+              weights[currentPassenger - 1] === packageWeight ? "bg-red-500 text-white" : ""
+            }`}
+          >
+            <MdLuggage className="text-3xl" />
+            <p className="font-medium">{packageWeight} kg</p>
+            <p className="font-medium">{(packageWeight * 30).toLocaleString()} THB</p>
+          </button>
         ))}
         </div>
-      <div className="select-luggage">
-       <button
-          onClick={() => handleButtonClick(0)}
-          className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
-            weights[currentPassenger - 1] === 0 ? "bg-red-500 text-white" : ""
-          }`}
-        >
-          <MdNoLuggage className="text-3xl" />
-          <p className="font-medium">No Luggage</p>
-          <p className="font-medium">0 THB</p>
-        </button>
-      {weight_packages.map((packageWeight) => (
-        <button
-          key={packageWeight}
-          onClick={() => handleButtonClick(packageWeight)}
-          className={`flex justify-center flex-col items-center bg-gray-100 w-28 h-28 rounded-3xl m-5 ${
-            weights[currentPassenger - 1] === packageWeight ? "bg-red-500 text-white" : ""
-          }`}
-        >
-          <MdLuggage className="text-3xl" />
-          <p className="font-medium">{packageWeight} kg</p>
-          <p className="font-medium">{packageWeight * 30} THB</p>
-        </button>
-      ))}
-      </div>
-      <div className="flex justify-center">
-        <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => check_seat("/fill_info")}>Continue</button>
-      </div>
+        </div>
+        </div>
+        <div className="flex justify-center gap-6">
+          <div className="flex justify-center">
+            {total_price()}
+          </div>
+          <div>
+            <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => check_seat("/fill_info")}>Continue</button>
+          </div>
+        </div>
       </div>
   );
 }
