@@ -12,6 +12,7 @@ function PayByCard() {
   const [securityCode, setSecurityCode] = useState();
 
   const location = useLocation()
+  const navigate = useNavigate()
   
   const booking_id = String(location.state.booking_id)
 
@@ -48,6 +49,7 @@ function PayByCard() {
       const response = await axios.put(`http://localhost:8000/${userId}/payment_method/creditcard?booking_id=${booking_id}`, data)
       console.log(response.data)
       alert(response.data)
+      navigate("/account")
     }
     catch(error) {
       alert("Failed")

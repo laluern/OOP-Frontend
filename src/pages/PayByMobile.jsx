@@ -26,6 +26,7 @@ function PayByMobile() {
       const response = await axios.put(`http://localhost:8000/${userId}/payment_method/mobilebanking?booking_id=${booking_id}`, data)
       console.log(response.data)
       alert(response.data)
+      navigate("/account")
     }
     catch(error) {
       alert("Failed")

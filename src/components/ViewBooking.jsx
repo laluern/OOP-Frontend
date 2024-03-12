@@ -31,11 +31,6 @@ function ViewBooking() {
             const response = await axios.post(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
             console.log(response.data)
             alert(response.data)
-            setMyBooking(prevState => {
-                const updatedBooking = {...prevState};
-                delete updatedBooking[key];
-                return updatedBooking;
-            });
         }
         catch (error) {
             alert("Error")

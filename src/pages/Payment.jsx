@@ -2,19 +2,21 @@ import React from 'react'
 import { FaRegCreditCard } from "react-icons/fa6";
 import { PiBankLight } from "react-icons/pi";
 import { useNavigate } from 'react-router';
-
+import { useLocation } from 'react-router-dom';
 import BookingDetails from '../components/BookingDetails';
 
 
 function Payment() {
     const navigate = useNavigate()
 
+    const location = useLocation()
+
     function handleCard() {
-        navigate("/payment/card", { state: { booking_id: location.state.booking_id } });
+        navigate("/payment/card", { state: { booking_id: location.state.booking_id }});
     }
 
     function handleMobile() {
-        navigate("/payment/mobile", { state: { booking_id: location.state.booking_id } });
+        navigate("/payment/mobile", { state: { booking_id: location.state.booking_id }});
     }
 
   return (
