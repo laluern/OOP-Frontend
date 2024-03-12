@@ -110,7 +110,7 @@ return (
                         <LuPhone className="register-icon col-span-2 align-middle h-full translate-x-5"/>
                     </div>
                     <div className="grid grid-cols-11 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
-                        <input type="text" placeholder="Address" value={address} onChangetranslate-x-5={handleAddressChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
+                        <input type="text" placeholder="Address" value={address} onChange={handleAddressChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
                         <LuHome className="register-icon col-span-2 align-middle h-full translate-x-5"/>  
                     </div>
                     <div className="grid grid-col-11 gap-4">

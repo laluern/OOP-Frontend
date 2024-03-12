@@ -22,7 +22,7 @@ function Payment() {
   return (
     <div className="flex flex-col items-center">
         {/* components booking details */}
-        <BookingDetails/>
+        <BookingDetails booking_info={location.state.booking_data}/>
         <div className="flex flex-row justify-center">
             <button onClick={handleCard} className="bg-red-600 m-5 p-5">
                 <div>Pay By Card</div>
