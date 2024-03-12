@@ -31,12 +31,12 @@ function ViewBooking() {
             <h1>My Booking</h1>
             <div>
                 <div>
-                    {/* {JSON.stringify([Object.keys(myBooking), Object.values(myBooking)])} */}
-                    <div>{Object.keys(myBooking)[0]}</div>
+                    {JSON.stringify([Object.keys(myBooking), Object.values(myBooking)])}
+                    {/* <div>{Object.keys(myBooking)[0]}</div>
                     <div>{Object.values(myBooking)[0].departure}</div>
                     <div>{Object.values(myBooking)[0].departure_time}</div>
                     <div>{Object.values(myBooking)[0].destination}</div>
-                    <div>{Object.values(myBooking)[0].arriving_time}</div>
+                    <div>{Object.values(myBooking)[0].arriving_time}</div> */}
                 </div>
             </div> 
         </div>
