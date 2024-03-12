@@ -11,6 +11,8 @@ function BookingDetails({booking_info}){
         year: 'numeric',
       })
 
+    
+
     return (
         <div className='bg-gray-100 w-1/5 rounded-3xl m-5'>
             <div className="flex justify-center">
