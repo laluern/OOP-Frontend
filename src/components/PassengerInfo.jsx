@@ -58,8 +58,7 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
         navigate(route, {
             state: {
               booking_data: booking_data,
-              passenger_data: PassengerInfo(),
-              booking_id: booking_id
+              passenger_data: PassengerInfo()
             }
           })
       };
@@ -175,7 +174,7 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
             <input type="date" placeholder="Birth Date" value={birthDate[currentPassenger - 1]} onChange={(e) => handleBirthDateChange(e.target.value)} className="col-span-1 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800" required/>
         </div>
         <div className="relative z-0 w-full mb-5 gap-10 py-2">
-          <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="">
             <div className="relative z-0 w-full mb-5 gap-10 py-2">
                 <input type="radio" name="gender" value="male" checked={gender[currentPassenger - 1] === 'male'} onChange={(e) => handleGenderChange(e.target.value)}/>
                 <label for="male">Male</label>

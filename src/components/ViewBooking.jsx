@@ -44,21 +44,38 @@ function ViewBooking() {
     }
     console.log(myBooking)
 
+    // const date = new Date(departure_date).toLocaleDateString('en-UK', {
+    //     day: 'numeric',
+    //     month: 'short',
+    //     year: 'numeric',
+    //   })
+
     return (
-        <div>
-            <h1>My Booking</h1>
+        <div className='flex items-center justify-center'>
+            <div>
             {Object.keys(myBooking).length > 0 ? (
                 <div>
                     {Object.entries(myBooking).map(([key, value]) => (
                         <div key={key}>
+                            <div className='flex items-center justify-center gap-2'>
+                            <div className="font-bold">Booking ID : </div>
                             <div>{key}</div>
-                            <div>{value.departure}</div>
-                            <div>{value.departure_time}</div>
-                            <div>{value.destination}</div>
-                            <div>{value.arriving_time}</div>
-                            <div>{value.booking_status}</div>
+                            </div>
+                            <div className="space-x-20 mt-5 mb-3">
+                                <p>Departure date : </p>
+                                <p>Departure : {value.departure}</p>
+                                <p>Destination : {value.destination}</p>
+                            </div>
+                            <div className="flex justify-center">
+                                <p>{value.departure_time}</p>
+                                <p> ------------------</p>
+                                <p>{value.arriving_time}</p>
+                            </div>
                             <div>
-                                <button onClick={() => cancel(key)}>Cancel</button>
+                                <p>Status : {value.booking_status}</p>
+                            </div>
+                            <div>
+                                <button className="bg-red-600 text-white" classonClick={() => cancel(key)}>Cancel</button>
                             </div>
                         </div>
                     ))}
@@ -66,6 +83,7 @@ function ViewBooking() {
             ) : (
                 <div>No bookings found</div>
             )}
+            </div>
         </div>
     )
 }
