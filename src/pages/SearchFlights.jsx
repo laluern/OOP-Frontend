@@ -63,7 +63,7 @@ function SearchFlights() {
       <Nav />
       {/* background */}
       <div>
-      <img src="/src/assets/MeltPlane.svg" className="absolute z-[-1]"/>
+        <img src="/src/assets/MeltPlane.svg" className="absolute z-[-1]"/>
       </div>
     
       {
