@@ -120,11 +120,11 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
 
           const seat =  passenger_data[`Passenger${passenger}`].seat 
           const weight =  passenger_data[`Passenger${passenger}`].weight
-          const full_name = firstname[currentPassenger - 1] + " " + surname[currentPassenger - 1]
-          const citizen_id = citizenID[currentPassenger - 1] 
-          const phone_number = phoneNumber[currentPassenger - 1] 
-          const birth_date = birthDate[currentPassenger - 1]
-          const passenger_gender = gender[currentPassenger - 1]
+          const full_name = firstname[passenger - 1] + " " + surname[passenger - 1]
+          const citizen_id = citizenID[passenger - 1] 
+          const phone_number = phoneNumber[passenger - 1] 
+          const birth_date = birthDate[passenger - 1]
+          const passenger_gender = gender[passenger - 1]
     
           passenger_data[`Passenger${passenger}`] = {seat, weight, full_name, citizen_id, phone_number, birth_date, passenger_gender};
 
@@ -185,7 +185,6 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
             <div>
                 <button className="transition-colors duration-200 bg-red-500 text-white w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-600 hover:text-neutral-50" onClick={() => check_info("/payment")}>Continue</button>
             </div>
-            <p>{JSON.stringify(booking_id)}</p>
             </div>
     </div>
     )
