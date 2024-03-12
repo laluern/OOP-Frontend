@@ -18,11 +18,12 @@ function Account() {
 
   return (
     <div>
-      {/* <Nav/> */}
+      <Nav/>
       <div>Welcome : {cookies.user._User__user_id}</div>
       <PersonalInfo/>
-      <ViewBooking/>
-      <button onClick={logOut} className="bg-red-500 text-white">Log out</button>
+      {/* <BookingDetails/> */}
+      {/* <ViewBooking/> */}
+      {/* <button onClick={logOut} className="bg-red-500 text-white">Log out</button> */}
     </div>
   )
 }
