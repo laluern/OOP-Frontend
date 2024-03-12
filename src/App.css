@@ -140,3 +140,7 @@ h3 {
 .passengers-info button:hover {
   background-color: #0056b3;
 }
+
+.scrollable-container {
+  overflow-y: auto;
+}
