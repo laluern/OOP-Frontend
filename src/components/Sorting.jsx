@@ -8,7 +8,7 @@ function Sorting({ onSortChange }){
         };
 
     return(
-    <select className='bg-gray-100 w-1/6 rounded-3xl m-5 ' onChange={handleSortChange} required>
+    <select className='text-white bg-red-500 h-10 w-50 rounded-xl mt-12 mb-5 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-700 px-5 py-2.5 text-center inline-flex items-center' onChange={handleSortChange} required>
         <option value="Cheapest">Sort by : Cheapest</option>
         <option value="Fastest">Sort by : Fastest</option>
         <option value="Earliest">Sort by : Earliest</option>
