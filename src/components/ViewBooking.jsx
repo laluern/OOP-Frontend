@@ -51,14 +51,16 @@ function ViewBooking() {
                 <div>
                     {Object.entries(myBooking).map(([key, value]) => (
                         <div key={key}>
-                            <div>{key}</div>
-                            <div>{value.departure}</div>
-                            <div>{value.departure_time}</div>
-                            <div>{value.destination}</div>
-                            <div>{value.arriving_time}</div>
-                            <div>{value.booking_status}</div>
+                            <div>Booking No: {key}</div>
+                            <div>Departure: {value.departure}</div>
+                            <div>Departure Date: {value.departure_time.split('T')[0]}</div>
+                            <div>Departure Time: {value.departure_time.split('T')[1]}</div>
+                            <div>Destination: {value.destination}</div>
+                            <div>Arriving Date: {value.arriving_time.split('T')[0]}</div>
+                            <div>Arriving Time: {value.arriving_time.split('T')[1]}</div>
+                            <div>Booking Status: {value.booking_status}</div>
                             <div>
-                                <button onClick={() => cancel(key)}>Cancel</button>
+                                <button onClick={() => cancel(key)} className="bg-blue-500">Cancel</button>
                             </div>
                         </div>
                     ))}
@@ -71,24 +73,3 @@ function ViewBooking() {
 }
 
 export default ViewBooking
-
-
-// return (
-    //     <div>
-    //         <h1>My Booking</h1>
-    //         <div>
-    //             <div>
-    //                 {JSON.stringify([Object.keys(myBooking), Object.values(myBooking)])}
-    //                 {/* <div>{Object.keys(myBooking)[0]}</div>
-    //                 <div>{Object.values(myBooking)[0].departure}</div>
-    //                 <div>{Object.values(myBooking)[0].departure_time}</div>
-    //                 <div>{Object.values(myBooking)[0].destination}</div>
-    //                 <div>{Object.values(myBooking)[0].arriving_time}</div>
-    //                 <div>{Object.values(myBooking)[0].booking_status}</div> */}
-    //                 <div>
-    //                     <button>Cancel</button>
-    //                 </div>
-    //             </div>
-    //         </div> 
-    //     </div>
-    // )

@@ -1,6 +1,7 @@
 import React , { useEffect, useState } from "react"
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
+import { useLocation } from "react-router-dom";
 
 function BookingDetails({booking_info}){
 
@@ -12,17 +13,6 @@ function BookingDetails({booking_info}){
         month: 'short',
         year: 'numeric',
       })
-
-    const price = async () => {
-        try {
-            const userId = cookies.user._User__user_id
-            // const response = await axios.get(`http://localhost:8000/`)
-        }
-        catch (error) {
-            
-        }
-    }
-
     
     return (
         <div className='bg-gray-100 w-1/5 rounded-3xl m-5'>
@@ -33,6 +23,7 @@ function BookingDetails({booking_info}){
             <p>({booking_info.departure})</p>
             <p>To</p>
             <p>({booking_info.destination})</p>
+            
         </div>
         <div className="flex justify-center">
             <p>{booking_info.flight_no} | {departure_time} - {destination_time} | {booking_info.duration}</p>

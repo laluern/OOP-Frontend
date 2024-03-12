@@ -1,8 +1,8 @@
-// ยังไม่ได้เทสต์ค่า
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { useNavigate , useLocation } from 'react-router-dom';
+import PriceSummary from '../components/PriceSummary';
 
 function PayByCard() {
   const [cookies, setCookie] = useCookies(['user']);
@@ -13,7 +13,7 @@ function PayByCard() {
 
   const location = useLocation()
   
-  const booking_id = location.state.booking_id
+  const booking_id = String(location.state.booking_id)
 
   useEffect(() => {
     console.log(cardHolderName, cardNo, expirationDate, securityCode
@@ -57,7 +57,7 @@ function PayByCard() {
   return (
     <div className="bg-red-500 p-10 m-5 w-1/2">
       <div className="flex flex-col gap-4 w-1/3">
-        {/* <div>{JSON.stringify(location.state.booking_id)}</div> */}
+        {/* <PriceSummary/> */}
         <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
         <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
         <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
