@@ -1,3 +1,4 @@
+// ยังไม่ได้เทสต์ค่า
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
@@ -13,19 +14,45 @@ function PayByCard() {
     setCardHolderName(e.target.value);
   };
 
+  const handleCardNo = (e) => {
+    setCardNo(e.target.value);
+  };
+
+  const handleExpirationDate = (e) => {
+    setExpirationDate(e.target.value);
+  };
+
+  const handleSecurityCode = (e) => {
+    setSecurityCode(e.target.value);
+  };
+
   const sendData = async () => {
-    const userId = cookies.user._User__user_id;
+    const data  = {
+      card_holder_name: cardHolderName,
+      card_no: cardNo,
+      expiration_date: expirationDate,
+      security_code: securityCode
+    }
+    try{
+      const userId = cookies.user._User__user_id;
+      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/creditcard}`, data)
+      console.log(response.data)
+      const responseMessageString = JSON.stringify(response.data)
+    }
+    catch(error) {
+      alert("Failed")
+    }
   }
 
   return (
     <div className="bg-red-500 p-10 m-5 w-1/2">
       <div className="flex flex-col gap-4 w-1/3">
-        <input type="text" placeholder="Card Holder Name" onChange={handleCardHolderName}/>
-        <input type="text" placeholder="Card No"/>
-        <input type="date"/>
-        <input type="password" placeholder="Security Code"/>
+        <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
+        <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
+        <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
+        <input value={securityCode} onChange={handleSecurityCode} type="password" placeholder="Security Code"/>
       </div>
-      <button className="bg-white m-5">Pay</button>
+      <button className="bg-white m-5" onClick={sendData}>Pay</button>
     </div>
   )
 }
