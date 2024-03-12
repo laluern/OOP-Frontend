@@ -14,6 +14,8 @@ import AddOn from './pages/AddOn';
 import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
+import ViewBoardingPass from './pages/ViewBoardingPass';
+
 // <<<<<<< HEAD
 import Account from './pages/Account';
 // =======
@@ -74,6 +76,10 @@ function App() {
         <Route
           path="/account"
           element={<Account/>}
+        />
+        <Route
+          path="/view_boarding_pass"
+          element={<ViewBoardingPass/>}
         />
       </Routes>
     </BrowserRouter>

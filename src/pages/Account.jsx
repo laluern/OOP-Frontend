@@ -17,11 +17,10 @@ function Account() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <Nav/>
-      <div>Welcome : {cookies.user._User__user_id}</div>
+      <br></br>
       <PersonalInfo/>
-      {/* <BookingDetails/> */}
       <ViewBooking/>
       <button onClick={logOut} className="bg-red-500 text-white">Log out</button>
     </div>
