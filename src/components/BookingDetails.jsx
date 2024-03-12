@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie'
 import { useLocation } from "react-router-dom";
 
 function BookingDetails({booking_info}){
-
+    
     const [departure_date, departure_time] = booking_info.departure_time.split(' ');
     const [destination_date, destination_time] = booking_info.destination_time.split(' ');
 

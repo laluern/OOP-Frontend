@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom';
 
 function FlightDetails({flight_info, total_passenger}){
@@ -13,7 +13,7 @@ function FlightDetails({flight_info, total_passenger}){
               }
             })
       };
-
+      
     const [departure_date, departure_time] = flight_info.departure_time.split(' ');
     const [destination_date, destination_time] = flight_info.destination_time.split(' ');
 

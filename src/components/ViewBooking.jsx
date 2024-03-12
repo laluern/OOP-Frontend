@@ -45,31 +45,49 @@ function ViewBooking() {
     //     year: 'numeric',
     //   })
 
-    return (
-        <div className='flex items-center justify-center'>
-            <div>
+    return   (
+        <div className="container mx-auto mt-8 p-4">
+            <h1 className="text-3xl font-semibold mb-4">My Booking</h1>
             {Object.keys(myBooking).length > 0 ? (
                 <div>
-                    {Object.entries(myBooking).map(([key, value]) => (
-                        <div key={key}>
-                            <div>{key}</div>
-                            <div>{value.departure}</div>
-                            <div>{value.departure_time}</div>
-                            <div>{value.destination}</div>
-                            <div>{value.arriving_time}</div>
-                            <div>{value.booking_status}</div>
-                            <div>
-                                <button onClick={() => cancel(key)}>Cancel</button>
+                    {Object.keys(myBooking).map(key => {
+                        const value = myBooking[key];
+                        return (
+                            <div key={key} className="bg-gray-100 rounded p-4 mb-4">
+                                <div className="font-semibold">Booking No: {key}</div>
+                                <div>Departure: {value.departure}</div>
+                                <div>Date: {new Date(value.departure_time).toLocaleDateString('en-UK', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                })}</div>
+                                <div>Departure Time: {new Date(value.departure_time).toLocaleTimeString('en-UK', {
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                })}</div>
+                                <div>Destination: {value.destination}</div>
+                                <div>Date: {new Date(value.destination_time).toLocaleDateString('en-UK', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                })}</div>
+                                <div>Destination Time: {new Date(value.destination_time).toLocaleTimeString('en-UK', {
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                })}</div>
+                                <div>Booking Status: {value.booking_status}</div>
+                                <div className="mt-2">
+                                    <button onClick={() => cancel(key)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Cancel</button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             ) : (
-                <div>No bookings found</div>
+                <div className="text-gray-500">No bookings found</div>
             )}
-            </div>
         </div>
-    )
+    );
 }
 
 export default ViewBooking

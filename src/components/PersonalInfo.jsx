@@ -25,18 +25,18 @@ function PersonalInfo() {
     }
 
   return (
-    <div>
-        <h1>Personal Information</h1>
-       <div>
-            {personalInfo && (
-                <div>
-                    <p>Full Name: {personalInfo.full_name}</p>
-                    <p>Email: {personalInfo.email}</p>
-                    <p>Phone Number: {personalInfo.phone_number}</p>
+            <div className="container mx-auto mt-8 p-4">
+                <h1 className="text-3xl font-semibold mb-4">Personal Information</h1>
+                <div className="bg-gray-100 rounded p-4">
+                    {personalInfo && (
+                        <div>
+                            <p className="mb-2">Full Name: {personalInfo.full_name}</p>
+                            <p className="mb-2">Email: {personalInfo.email}</p>
+                            <p className="mb-2">Phone Number: {personalInfo.phone_number}</p>
+                        </div>
+                    )}
                 </div>
-            )}
-        </div>
-    </div>
+            </div>
   )
 }
 
