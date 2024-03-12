@@ -44,9 +44,9 @@ function Payment() {
     <div className="flex flex-col items-center">
         <div>
             {/* <p>{JSON.stringify(detail)}</p> */}
-            <p>Seat price : {JSON.stringify(detail['price']['seat price'])}</p>
-            <p>Luggages price : {JSON.stringify(detail['price']['luggages price'])}</p>
-            <p>Summary price : {JSON.stringify(detail['price']['Summary price'])}</p>
+            <p>Seat price : {detail && detail.price && JSON.stringify(detail.price['seat price'])}</p>
+            <p>Luggages price : {detail && detail.price && JSON.stringify(detail.price['luggages price'])}</p>
+            <p>Summary price : {detail && detail.price && JSON.stringify(detail.price['Summary price'])}</p>
         </div>
         <div className="flex flex-row justify-center">
             <button onClick={handleCard} className="bg-red-600 m-5 p-5">
