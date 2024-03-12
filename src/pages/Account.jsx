@@ -20,10 +20,13 @@ function Account() {
     <div>
       <Nav/>
       <div>Welcome : {cookies.user._User__user_id}</div>
-      <div className="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg">
-      <ViewBooking/>
+      <div className="flex flex-col items-center justify-center w-full translate-y-32 ">
+        <div className="rounded-4xl border-solid bg-neutral-250 max-w-2xl shadow overflow-hidden sm:rounded-lg w-full translate-y-32 ">
+        <ViewBooking/>
+        </div>
+        <button onClick={logOut} className="bg-red-500 text-white z-50">Log out</button>
       </div>
-      <button onClick={logOut} className="bg-red-500 text-white">Log out</button>
+      
     </div>
   )
 }
