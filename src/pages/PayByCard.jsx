@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
+import { useNavigate , useLocation } from 'react-router-dom';
 
 function PayByCard() {
   const [cookies, setCookie] = useCookies(['user']);
@@ -9,6 +10,15 @@ function PayByCard() {
   const [cardNo, setCardNo] = useState();
   const [expirationDate, setExpirationDate] = useState();
   const [securityCode, setSecurityCode] = useState();
+
+  const location = useLocation()
+  
+  const booking_id = location.state.booking_id
+
+  useEffect(() => {
+    console.log(cardHolderName, cardNo, expirationDate, securityCode
+    )
+  }, [cardHolderName, cardNo, expirationDate, securityCode])
 
   const handleCardHolderName = (e) => {
     setCardHolderName(e.target.value);
@@ -35,9 +45,9 @@ function PayByCard() {
     }
     try{
       const userId = cookies.user._User__user_id;
-      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/creditcard}`, data)
+      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/creditcard?booking_id=${booking_id}`, data)
       console.log(response.data)
-      const responseMessageString = JSON.stringify(response.data)
+      alert(response.data)
     }
     catch(error) {
       alert("Failed")
@@ -47,6 +57,7 @@ function PayByCard() {
   return (
     <div className="bg-red-500 p-10 m-5 w-1/2">
       <div className="flex flex-col gap-4 w-1/3">
+        {/* <div>{JSON.stringify(location.state.booking_id)}</div> */}
         <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
         <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
         <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
