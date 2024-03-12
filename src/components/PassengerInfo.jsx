@@ -58,7 +58,6 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
         navigate(route, {
             state: {
               booking_data: booking_data,
-              booking_id: booking_id,
               passenger_data: PassengerInfo()
             }
           })

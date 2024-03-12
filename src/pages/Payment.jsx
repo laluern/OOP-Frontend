@@ -1,15 +1,10 @@
 import React from 'react'
 import { FaRegCreditCard } from "react-icons/fa6";
 import { PiBankLight } from "react-icons/pi";
-import { useNavigate, useLocation } from 'react-router-dom';
-import BookingDetails from '../components/BookingDetails';
-
+import { useNavigate } from 'react-router';
 
 function Payment() {
     const navigate = useNavigate()
-
-    const location = useLocation()
-
 
     function handleCard() {
         navigate("/payment/card", { state: { booking_id: location.state.booking_id } });
@@ -34,6 +29,7 @@ function Payment() {
                 <PiBankLight />
             </button>
         </div>
+        <div></div>
     </div>
   )
 }
