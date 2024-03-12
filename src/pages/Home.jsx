@@ -4,8 +4,8 @@ import Nav from '../components/Nav'
 function Home() {
   return (
     <div>
-        <Nav/>
-        <img src="/src/assets/home-bg.png" className="h-auto w-auto fixed" />
+      <Nav/>
+        <img src="/src/assets/home-bg.png" className="h-auto w-auto fixed"/>
     </div>
   )
 }
