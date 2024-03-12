@@ -48,9 +48,9 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
                     return;
                 }
             }
-        fill_info(passenger_info)
-        goto(route)
         }
+      fill_info(passenger_info)
+      goto(route)
     }
     
       const goto = (route) => {
