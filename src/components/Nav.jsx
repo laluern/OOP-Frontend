@@ -1,9 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import SearchFlights from '../pages/SearchFlights'
+import { useCookies } from 'react-cookie'
 
 function Nav() {
   const navigate = useNavigate()
+
+  const [cookies] = useCookies(['user']);
 
   function handleHome() {
     navigate("/")
@@ -16,8 +18,9 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-red-500 z-10">
       <div className="bg-red-500 flex justify-between">
-        <a href="/home" onClick={handleHome}>
+        <a href="/home" onClick={handleHome} className="flex flex-row justify-center items-center font-bold text-white">
           <img src="/src/assets/melt-logo.svg" className="w-10 mx-5 my-2 border rounded-2xl"/>
+          <p>Hello! {JSON.stringify(cookies.user._User__user_id)}</p>
         </a>
 
         <ul className="text-white flex flex-row gap-4 m-2">

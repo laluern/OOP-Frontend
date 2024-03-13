@@ -47,7 +47,7 @@ function ViewBooking() {
     const cancel = async (key) => {
         try {
             const userId = cookies.user._User__user_id
-            const response = await axios.post(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
+            const response = await axios.put(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
             console.log(response.data)
             alert(response.data)
         }

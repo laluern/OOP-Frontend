@@ -69,18 +69,6 @@ function PayByCard() {
       </div>
     </div>
   )
-
-  // return (
-  //   <div className="bg-red-500 p-10 m-5 w-80 rounded-xl flex flex-col justify-center items-center">
-  //     <div className="flex flex-col gap-4">
-  //       <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
-  //       <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
-  //       <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
-  //       <input value={securityCode} onChange={handleSecurityCode} type="password" placeholder="Security Code"/>
-  //     </div>
-  //     <button className="bg-white m-5" onClick={sendData}>Pay</button>
-  //   </div>
-  // )
 }
 
 export default PayByCard
