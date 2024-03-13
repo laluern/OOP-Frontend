@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 import axios from "axios";
 
-function PassengersInfo({booking_data, passenger_data, booking_id}){
+function PassengersInfo({booking_data, passenger_data}){
 
     const navigate = useNavigate();
 
@@ -20,7 +20,10 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
     const [gender, setGender] = useState(Array.from({ length: total_passenger }, () => ""));
     const [currentPassenger, setCurrentPassenger] = useState(1);
 
-    const fill_info = async (passenger_info) => {
+    const fill_info = async (passenger_info, route) => {
+
+      const userId = cookies.user._User__user_id;
+      const response = await axios.post(`http://localhost:8000/${userId}/${flight_instance_no}/create_booking`);
 
       for (let passenger = 1; passenger <= total_passenger; passenger++) {
 
@@ -33,10 +36,19 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
           citizen_id: passenger_info[`Passenger${passenger}`]["citizen_id"],
           package: passenger_info[`Passenger${passenger}`]["weight"].toString()
         }
+          
           console.log(data)
-          await axios.post(`http://localhost:8000/${userId}/${booking_id}/${flight_instance_no}/fill_info`, data)
+          await axios.post(`http://localhost:8000/${userId}/${response.data}/${flight_instance_no}/fill_info`, data)
 
       }
+
+      navigate(route, {
+        state: {
+          booking_data: booking_data,
+          passenger_data: PassengerInfo(),
+          booking_id: response.data
+        }
+      })
     }
 
     const check_info = (route) => {
@@ -50,19 +62,8 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
                 }
             }
         }
-      fill_info(passenger_info)
-      goto(route)
+      fill_info(passenger_info, route)
     }
-    
-      const goto = (route) => {
-        navigate(route, {
-            state: {
-              booking_data: booking_data,
-              passenger_data: PassengerInfo(),
-              booking_id: booking_id
-            }
-          })
-      };
     
     const handleFirstnameChange = (firstname) => {
         setFirstname((prev) => {
