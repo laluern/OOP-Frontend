@@ -50,16 +50,47 @@ function PayByMobile() {
   };
 
   return (
-    <div>
-      <div>
-        <input value={ownerName} onChange={handleOwnerNameChange} type="text" placeholder="Owner Name"/>
-        <input value={telNo} onChange={handlTelNoChange} type="text" placeholder="Tel No"/>
-        <input value={accountNo} onChange={handlAccountNoChange} type="text" placeholder="Account No"/>
-        <input value={password} onChange={handlPasswordChange} type="password" placeholder="Password"/>
+    <div className="flex justify-center items-center h-screen">
+      <div className="bg-red-500 p-8 rounded-lg shadow-lg w-80">
+        <div className="flex flex-col gap-4">
+          <input
+            value={ownerName}
+            onChange={handleOwnerNameChange}
+            type="text"
+            placeholder="Owner Name"
+            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+          />
+          <input
+            value={telNo}
+            onChange={handlTelNoChange}
+            type="text"
+            placeholder="Tel No"
+            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+          />
+          <input
+            value={accountNo}
+            onChange={handlAccountNoChange}
+            type="text"
+            placeholder="Account No"
+            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+          />
+          <input
+            value={password}
+            onChange={handlPasswordChange}
+            type="password"
+            placeholder="Password"
+            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+          />
+        </div>
+        <button
+          onClick={sendData}
+          className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-5 transition duration-300 ease-in-out transform hover:scale-105 w-full"
+        >
+          Pay
+        </button>
       </div>
-      <button onClick={sendData}>Pay</button>
     </div>
-  )
+  );
 }
 
 export default PayByMobile

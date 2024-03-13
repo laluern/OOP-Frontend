@@ -57,17 +57,30 @@ function PayByCard() {
   }
 
   return (
-    <div className="bg-red-500 p-10 m-5 w-1/2">
-      <div className="flex flex-col gap-4 w-1/3">
-        {/* <PriceSummary/> */}
-        <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
-        <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
-        <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
-        <input value={securityCode} onChange={handleSecurityCode} type="password" placeholder="Security Code"/>
+    <div className="flex justify-center items-center h-full mt-32">
+      <div className="bg-red-500 p-10 rounded-xl shadow-lg">
+        <div className="flex flex-col gap-4 w-80">
+          <input value={cardHolderName} onChange={handleCardHolderName} type="text" className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500 text-center" placeholder="Card Holder Name"/>
+          <input value={cardNo} onChange={handleCardNo} type="text" className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500 text-center" placeholder="Card No"/>
+          <input value={expirationDate} onChange={handleExpirationDate} type="date" className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500 text-center"/>
+          <input value={securityCode} onChange={handleSecurityCode} type="password" className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500 text-center" placeholder="Security Code"/>
+        </div>
+        <button className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-5 transition duration-300 ease-in-out transform hover:scale-105 w-full" onClick={sendData}>Pay</button>
       </div>
-      <button className="bg-white m-5" onClick={sendData}>Pay</button>
     </div>
   )
+
+  // return (
+  //   <div className="bg-red-500 p-10 m-5 w-80 rounded-xl flex flex-col justify-center items-center">
+  //     <div className="flex flex-col gap-4">
+  //       <input value={cardHolderName} onChange={handleCardHolderName} type="text" placeholder="Card Holder Name"/>
+  //       <input value={cardNo} onChange={handleCardNo} type="text" placeholder="Card No"/>
+  //       <input value={expirationDate} onChange={handleExpirationDate} type="date"/>
+  //       <input value={securityCode} onChange={handleSecurityCode} type="password" placeholder="Security Code"/>
+  //     </div>
+  //     <button className="bg-white m-5" onClick={sendData}>Pay</button>
+  //   </div>
+  // )
 }
 
 export default PayByCard

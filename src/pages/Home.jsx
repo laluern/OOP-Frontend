@@ -3,11 +3,11 @@ import Nav from '../components/Nav'
 
 function Home() {
   return (
-    <div>
-      <Nav/>
-        <img src="/src/assets/home-bg.png" className="h-auto w-auto fixed"/>
+    <div className="relative">
+      <Nav />
+      <img src="/src/assets/home-bg.png" className="w-full h-auto" />
     </div>
-  )
+  );
 }
 
 export default Home
