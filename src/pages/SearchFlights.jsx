@@ -121,7 +121,7 @@ function SearchFlights() {
                   {/* promocode */}
                   <div className="flex flex-col">
                     <label htmlFor="promocode" className="text-slate-50 text-xl italic mt-4">Promocode</label>
-                    <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-1 mb-1 mt-2 rounded-xl box-border w-11/12" />
+                    <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" />
                   </div>
                  </div>
 
@@ -132,7 +132,6 @@ function SearchFlights() {
         )
           // : <div>{JSON.stringify(result)}</div>
       }
-
     </div >
   );
 }

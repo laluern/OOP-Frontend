@@ -65,6 +65,7 @@ function PayByMobile() {
             onChange={handlTelNoChange}
             type="text"
             placeholder="Tel No"
+            maxLength="10"
             className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
           />
           <input
