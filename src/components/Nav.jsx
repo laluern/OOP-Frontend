@@ -20,7 +20,7 @@ function Nav() {
       <div className="bg-red-500 flex justify-between">
         <a href="/home" onClick={handleHome} className="flex flex-row justify-center items-center font-bold text-white">
           <img src="/src/assets/melt-logo.svg" className="w-10 mx-5 my-2 border rounded-2xl"/>
-          <p>Hello! {JSON.stringify(cookies.user._User__user_id)}</p>
+          <p>Hello, {JSON.stringify(cookies.user._User__full_name)}</p>
         </a>
 
         <ul className="text-white flex flex-row gap-4 m-2">
