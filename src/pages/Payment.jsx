@@ -11,7 +11,9 @@ function Payment() {
 
     const location = useLocation()
 
+    console.log(location.state.booking_id)
     const booking_no = String(location.state.booking_id)
+
     const [detail, setDetail] = useState();
 
     const [cookies] = useCookies(['user']);

@@ -29,6 +29,15 @@ function ViewBooking() {
         }
       }
 
+    const cotinue_pay = async (booking_no) => {
+
+        navigate("/payment", {
+            state: {
+                booking_id: booking_no
+                }
+            })
+    }
+
     const info = async () => {
 
         try {
@@ -85,9 +94,14 @@ function ViewBooking() {
                                     return null;
                                 case 'Pending':
                                     return (
-                                        <button onClick={() => cancel(key)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
-                                            Cancel
-                                        </button>
+                                        <div className="space-x-5">
+                                            <button onClick={() => cancel(key)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
+                                                Cancel
+                                            </button>
+                                            <button onClick={() => cotinue_pay(key)} className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">
+                                                Continue
+                                            </button>
+                                        </div>
                                     );
                                 case 'Confirm':
                                     return (
@@ -95,7 +109,7 @@ function ViewBooking() {
                                             <button onClick={() => cancel(key)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">
                                                 Cancel
                                             </button>
-                                            <button onClick={() => view_boarding_pass(key)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                            <button onClick={() => view_boarding_pass(key)} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">
                                                 View Boarding Pass
                                             </button>
                                         </div>
