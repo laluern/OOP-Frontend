@@ -39,7 +39,7 @@ function ViewBooking() {
             console.log(myBooking)
         }
         catch (error) {
-            alert("Error")
+            alert("Error" + error.name)
             return null
         }
     }
