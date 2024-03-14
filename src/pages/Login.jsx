@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import '../App.css'
 import axios from 'axios';
 import { FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
+  const navigate = useNavigate()
+  
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loginResult, setLoginResult] = useState(null);
-
   const [cookies, setCookie] = useCookies(['user']);
 
-  useEffect(()=> {
+  useEffect(() => {
     console.log(email, password)
   }, [email, password])
-
-  const navigate = useNavigate()
 
   const sendData = async () => {
     const userData = {
@@ -24,17 +23,17 @@ function Login() {
       password: password
     }
 
-    try{
+    try {
       const response = await axios.post("http://127.0.0.1:8000/login", userData)
       console.log(response.data)
       setLoginResult(response.data.status)
-      setCookie('user', response.data.user , { path: '/' });
+      setCookie('user', response.data.user, { path: '/' });
       const responseMessageString = JSON.stringify(response.data.message)
       alert(responseMessageString)
       handleLogin()
-      
+
     }
-    catch(error) {
+    catch (error) {
       alert("Login failed, Please try again");
       return null
     }
@@ -43,7 +42,7 @@ function Login() {
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
-  
+
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -65,17 +64,17 @@ function Login() {
         <div className="w-96 text-gray-50 rounded-xl border-solid border-1 border-slate-50 py-8 px-10 backdrop-blur-lg shadow-2xl">
 
           <h1 className="text-4xl text-center text-5x1 font-medium">Login</h1>
-          
+
           {/* Login box */}
           <div className="mt-8 mb-3">
             <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5 mb-3">
-            <input value={email} onChange={handleEmail} type="email" placeholder="Email" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
-            <FaUser className="col-span-1 align-middle h-full text-red-500"/>
+              <input value={email} onChange={handleEmail} type="email" placeholder="Email" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required />
+              <FaUser className="col-span-1 align-middle h-full text-red-500" />
             </div>
 
             <div className="grid grid-cols-12 gap-4 rounded-3xl border-solid bg-neutral-50 pe-5">
-            <input value={password} onChange={handlePassword} type="password" placeholder="Password" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required/>
-            <FaLock className="col-span-1 align-middle h-full text-red-500"/>
+              <input value={password} onChange={handlePassword} type="password" placeholder="Password" className="col-span-11 p-2 ps-4 bg-transparent text-slate-800" required />
+              <FaLock className="col-span-1 align-middle h-full text-red-500" />
             </div>
           </div>
 

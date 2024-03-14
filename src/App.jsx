@@ -1,9 +1,7 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Components
 import FirstPage from './pages/FirstPage';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -15,15 +13,10 @@ import Payment from './pages/Payment';
 import PayByCard from './pages/PayByCard';
 import PayByMobile from './pages/PayByMobile';
 import ViewBoardingPass from './pages/ViewBoardingPass';
-
-// <<<<<<< HEAD
 import Account from './pages/Account';
-// =======
 import FillInfo from './pages/FillInfo';
-// >>>>>>> fb54e9c26843b250c90893941673e30b42ced558
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <BrowserRouter>
@@ -31,55 +24,55 @@ function App() {
         <Route
           exact
           path="/"
-          element={<FirstPage/>}
+          element={<FirstPage />}
         />
         <Route
           path="/login"
-          element={<Login/>}
+          element={<Login />}
         />
         <Route
           path="/home"
-          element={<Home/>}
+          element={<Home />}
         />
         <Route
           path="/search/flights"
-          element={<SearchFlights/>}
+          element={<SearchFlights />}
         />
         <Route
           path="/search/flights_results"
-          element={<SearchResult/>}
+          element={<SearchResult />}
         />
         <Route
           path="add_on"
-          element={<AddOn/>}
-        />          
+          element={<AddOn />}
+        />
         <Route
           path="fill_info"
-          element={<FillInfo/>}
+          element={<FillInfo />}
         />
         <Route
           path="/register"
-          element={<Register/>}
+          element={<Register />}
         />
         <Route
           path="/payment"
-          element={<Payment/>}
+          element={<Payment />}
         />
         <Route
           path="/payment/card"
-          element={<PayByCard/>}
+          element={<PayByCard />}
         />
         <Route
           path="/payment/mobile"
-          element={<PayByMobile/>}
+          element={<PayByMobile />}
         />
         <Route
           path="/account"
-          element={<Account/>}
+          element={<Account />}
         />
         <Route
           path="/view_boarding_pass"
-          element={<ViewBoardingPass/>}
+          element={<ViewBoardingPass />}
         />
       </Routes>
     </BrowserRouter>

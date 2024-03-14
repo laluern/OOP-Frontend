@@ -1,14 +1,14 @@
-import React , { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { useLocation } from "react-router-dom";
 
 function PriceSummary() {
     const location = useLocation()
-    
-    const booking_no = String(location.state.booking_id)
+    const [cookies, setCookie] = useCookies(['user']);
+
     const [detail, setDetail] = useState();
-    const [cookies] = useCookies(['user']);
+    const booking_no = String(location.state.booking_id)
 
     const price = async () => {
         try {
@@ -27,11 +27,11 @@ function PriceSummary() {
     }, []);
 
 
-  return (
-    <div>
-        <p>Summary price : {JSON.stringify(detail['price']["Summary price"])}</p>
-    </div>
-  )
+    return (
+        <div>
+            <p>Summary price : {JSON.stringify(detail['price']["Summary price"])}</p>
+        </div>
+    )
 }
 
 export default PriceSummary

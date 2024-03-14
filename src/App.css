@@ -8,6 +8,7 @@
   box-sizing: border-box;
   font-family: "Prompt", sans-serif;
 }
+
 .fly-with-us {
   font-size: 160px;
   margin-top: 30vh;
@@ -164,7 +165,7 @@ h3 {
   overflow-y: auto;
 }
 
-.boardingPass-name  {
+.boardingPass-name {
 
   position: absolute;
   left: 560px;
@@ -173,7 +174,7 @@ h3 {
   font-weight: bold;
 }
 
-.boardingPass-departure  {
+.boardingPass-departure {
 
   position: absolute;
   left: 550px;
@@ -182,7 +183,7 @@ h3 {
   font-weight: bold;
 }
 
-.boardingPass-destination{
+.boardingPass-destination {
 
   position: absolute;
   left: 710px;
@@ -199,7 +200,7 @@ h3 {
   font-size: 14px;
 }
 
-.boardingPass-date{
+.boardingPass-date {
 
   position: absolute;
   left: 650px;
@@ -214,6 +215,7 @@ h3 {
   top: 220px;
   font-size: 14px;
 }
+
 .boardingPass-seat {
 
   position: absolute;

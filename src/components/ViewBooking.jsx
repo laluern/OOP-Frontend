@@ -14,28 +14,28 @@ function ViewBooking() {
 
     const view_boarding_pass = async (booking_no) => {
         try {
-          const userId = cookies.user._User__user_id;
-          const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/view_boarding_pass`);
-    
+            const userId = cookies.user._User__user_id;
+            const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/view_boarding_pass`);
+
             navigate("/view_boarding_pass", {
-            state: {
-                all_passenger_boarding_pass: response.data
+                state: {
+                    all_passenger_boarding_pass: response.data
                 }
             })
-    
+
         } catch (error) {
-          alert("Failed");
-          return null;
+            alert("Failed");
+            return null;
         }
-      }
+    }
 
     const cotinue_pay = async (booking_no) => {
 
         navigate("/payment", {
             state: {
                 booking_id: booking_no
-                }
-            })
+            }
+        })
     }
 
     const info = async () => {
@@ -79,7 +79,7 @@ function ViewBooking() {
                 <div>
                     {Object.keys(myBooking).map(key => {
                         const value = myBooking[key];
-    
+
                         const statusBackgroundColor = (() => {
                             switch (value.booking_status) {
                                 case 'Cancel':
@@ -92,7 +92,7 @@ function ViewBooking() {
                                     return 'bg-gray-100';
                             }
                         })();
-    
+
                         const statusButton = (() => {
                             switch (value.booking_status) {
                                 case 'Cancel':
@@ -123,9 +123,9 @@ function ViewBooking() {
                                     return null;
                             }
                         })();
-    
+
                         return (
-                                <div key={key} className={`rounded-2xl p-4 mb-4 ${statusBackgroundColor}`}>
+                            <div key={key} className={`rounded-2xl p-4 mb-4 ${statusBackgroundColor}`}>
                                 <div className="font-semibold">Booking No: {key}</div>
                                 <div>Date: {new Date(value.departure_time).toLocaleDateString('en-UK', {
                                     day: 'numeric',

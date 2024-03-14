@@ -1,25 +1,33 @@
-import React , { useEffect, useState } from "react"
+import React from "react"
 import { useNavigate } from 'react-router-dom';
 
-function FlightDetails({flight_info, total_passenger}){
+function FlightDetails({ flight_info, total_passenger }) {
+  const navigate = useNavigate()
 
-      const navigate = useNavigate()
-  
-      const goto = (route) => {
-          navigate(route, {
-              state: {
-                booking_data: flight_info,
-                total_passenger: total_passenger
-              }
-            })
-      };
-      
-    const [departure_date, departure_time] = flight_info.departure_time.split(' ');
-    const [destination_date, destination_time] = flight_info.destination_time.split(' ');
+  const goto = (route) => {
+    navigate(route, {
+      state: {
+        booking_data: flight_info,
+        total_passenger: total_passenger
+      }
+    })
+  };
 
-    return (
+  const [departure_date, departure_time] = flight_info.departure_time.split(' ');
+  const [destination_date, destination_time] = flight_info.destination_time.split(' ');
+
+  const date = new Date(departure_date).toLocaleDateString('en-UK', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+
+  return (
     <div className='bg-gray-100 w-1/4 h-56 rounded-3xl m-5'>
-      <div className="flex justify-center space-x-20 mt-5 mb-3">
+      <div className="flex justify-center">
+        <p className="font-bold underline mt-2">{date}</p>
+      </div>
+      <div className="flex justify-center space-x-20 mt-1 mb-3">
         <p>{flight_info.departure}</p>
         <p>{flight_info.duration}</p>
         <p>{flight_info.destination}</p>

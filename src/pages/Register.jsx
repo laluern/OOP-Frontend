@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
-import { LuUser, LuPhone, LuHome, LuCalendarDays } from "react-icons/lu";
+import { LuUser, LuPhone, LuHome } from "react-icons/lu";
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 
 function Register() {
+    const navigate = useNavigate()
+    const [cookies, setCookie] = useCookies(['user']);
+
     const [firstName, setFirstName] = useState();
     const [surname, setSurname] = useState();
     const [email, setEmail] = useState();
@@ -14,10 +17,6 @@ function Register() {
     const [address, setAddress] = useState();
     const [birthDate, setBirthDate] = useState();
     const [result, setResult] = useState(null);
-
-    const [cookies, setCookie] = useCookies(['user']);
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         console.log(firstName, surname, email, password, phoneNumber, address, birthDate
@@ -85,7 +84,6 @@ return (
         <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
             <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
         </video>
-        {
             <div className="backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
                 
                 <h1 className="text-slate-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
@@ -116,14 +114,14 @@ return (
                         <input type="text" placeholder="Address" value={address} onChange={handleAddressChange} className="col-span-9 p-1 ps-4 bg-transparent text-slate-800" required/>
                         <LuHome className="register-icon col-span-2 align-middle h-full translate-x-5"/>  
                     </div>
-                    <div className="grid grid-col-11 gap-4">
+                    <div className="grid grid-col-11">
+                        <p className="text-white">Birth Date</p>
                         <input type="date" placeholder="Birth Date" value={birthDate} onChange={handleBirthDateChange} className="col-span-9 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800"required/>
                     </div>
                 </div>
 
                     <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Register</button>
                 </div>
-        }
     </div>
   )
 }
