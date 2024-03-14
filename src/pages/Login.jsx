@@ -31,6 +31,7 @@ function Login() {
       setCookie('user', response.data.user , { path: '/' });
       const responseMessageString = JSON.stringify(response.data.message)
       alert(responseMessageString)
+      handleLogin()
       
     }
     catch(error) {
@@ -61,7 +62,6 @@ function Login() {
         <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
       </video>
       {
-        !loginResult ? 
         <div className="w-96 text-gray-50 rounded-xl border-solid border-1 border-slate-50 py-8 px-10 backdrop-blur-lg shadow-2xl">
 
           <h1 className="text-4xl text-center text-5x1 font-medium">Login</h1>
@@ -84,7 +84,7 @@ function Login() {
           <div className="text-center mt-4 text-sm">
             <p>Don't have an account? <a href="" className="text-neutral-50 font-bold hover:underline hover:text-red-500 italic" onClick={handleRegister}>Sign up!</a></p>
           </div>
-        </div> : <button onClick={handleLogin} className="bg-white p-4 rounded-3xl text-red-500 hover:bg-gray-200">home</button>
+        </div>
       }
     </div>
   )

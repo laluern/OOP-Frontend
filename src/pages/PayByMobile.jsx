@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 import { useNavigate , useLocation } from 'react-router-dom';
+import Nav from '../components/Nav';
 
 function PayByMobile() {
   const [cookies, setCookie] = useCookies(['user']);
@@ -51,47 +52,50 @@ function PayByMobile() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-red-500 p-8 rounded-lg shadow-lg w-80">
-        <div className="flex flex-col gap-4">
-          <input
-            value={ownerName}
-            onChange={handleOwnerNameChange}
-            type="text"
-            placeholder="Owner Name"
-            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
-          />
-          <input
-            value={telNo}
-            onChange={handlTelNoChange}
-            type="text"
-            placeholder="Tel No"
-            maxLength="10"
-            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
-          />
-          <input
-            value={accountNo}
-            onChange={handlAccountNoChange}
-            type="text"
-            placeholder="Account No"
-            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
-          />
-          <input
-            value={password}
-            onChange={handlPasswordChange}
-            type="password"
-            placeholder="Password"
-            className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
-          />
-        </div>
-        <button
-          onClick={sendData}
-          className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-5 transition duration-300 ease-in-out transform hover:scale-105 w-full"
-        >
-          Pay
-        </button>
-      </div>
+    <div>
+      <Nav/>
+      <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
+        <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
+      </video>
+      <div className="flex justify-center items-center h-screen">
+    <div className="bg-red-500 p-10 rounded-xl shadow-lg flex flex-col items-center">
+      <h1 className="text-white text-2xl mb-4 ud">Total Price</h1>
+      <p className="text-white text-xl mb-8">{location.state.total_price.toLocaleString()}</p>
+          <div className="flex flex-col gap-4 w-80">
+            <input
+              value={ownerName}
+              onChange={handleOwnerNameChange}
+              type="text"
+              placeholder="Owner Name"
+              className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+            />
+            <input
+              value={telNo}
+              onChange={handlTelNoChange}
+              type="text"
+              placeholder="Tel No"
+              maxLength="10"
+              className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+            />
+            <input
+              value={accountNo}
+              onChange={handlAccountNoChange}
+              type="text"
+              placeholder="Account No"
+              className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+            />
+            <input
+              value={password}
+              onChange={handlPasswordChange}
+              type="password"
+              placeholder="Password"
+              className="border-2 border-gray-300 p-3 rounded-lg placeholder-gray-500"
+            />
+</div>
+      <button className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-5 transition duration-300 ease-in-out transform hover:scale-105 w-full" onClick={sendData}>Pay</button>
     </div>
+  </div>
+</div>
   );
 }
 

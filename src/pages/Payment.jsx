@@ -4,6 +4,7 @@ import { FaRegCreditCard } from "react-icons/fa6";
 import { PiBankLight } from "react-icons/pi";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Nav from '../components/Nav';
 
 
 function Payment() {
@@ -35,19 +36,20 @@ function Payment() {
     }, []);
 
     function handleCard() {
-        navigate("/payment/card", { state: { booking_id: location.state.booking_id }});
+        navigate("/payment/card", { state: { booking_id: location.state.booking_id, total_price: detail.price['Summary price']}});
     }
 
     function handleMobile() {
-        navigate("/payment/mobile", { state: { booking_id: location.state.booking_id }});
+        navigate("/payment/mobile", { state: { booking_id: location.state.booking_id, total_price: detail.price['Summary price']}});
     }
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-        <div>
-            <img src="/src/assets/MeltPlane.svg" className="absolute inset-0 object-cover z-[-1]"/>
-        </div>
-        <div className="rounded-3xl border-solid bg-slate-200 pe-5 mb-8 w-3/12 border-1 border-slate-500 shadow-md">
+    <div className="h-screen flex flex-col items-center justify-center overflow-hidden">
+        <Nav/>
+        <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
+        <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
+      </video>
+        <div className="rounded-3xl text-white border-solid bg-red-500 pe-5 mb-8 w-3/12 border-1 border-slate-500 shadow-md">
             <h1 className="text-bold text-4xl text-center mt-6 underline">Price Summary</h1>
             <div className='p-8 text-center'>
                 <p className="pb-5 text-xl">All Seat Price: {detail && detail.price && detail.price['seat price'].toLocaleString()}</p>
