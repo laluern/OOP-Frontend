@@ -54,22 +54,27 @@ function ViewBooking() {
     }
 
     const cancel = async (key) => {
-        try {
-            const userId = cookies.user._User__user_id
-            const response = await axios.put(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
-            console.log(response.data)
-            alert(response.data)
-        }
-        catch (error) {
-            alert("Error")
-            return null
+
+        const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
+
+        if (confirmCancel) {
+            try {
+                const userId = cookies.user._User__user_id
+                const response = await axios.put(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
+                console.log(response.data)
+                window.location.reload();
+            }
+            catch (error) {
+                alert("Error")
+                return null
+            }
         }
     }
     console.log(myBooking)
 
     return (
         <div className="container mx-auto mt-8 p-4">
-            <h1 className="text-3xl font-semibold mb-4">My Booking</h1>
+            <h1 className="text-3xl font-semibold mb-4">My Bookings</h1>
             {Object.keys(myBooking).length > 0 ? (
                 <div>
                     {Object.keys(myBooking).map(key => {
@@ -120,7 +125,7 @@ function ViewBooking() {
                         })();
     
                         return (
-                                <div key={key} className={`rounded p-4 mb-4 ${statusBackgroundColor}`}>
+                                <div key={key} className={`rounded-2xl p-4 mb-4 ${statusBackgroundColor}`}>
                                 <div className="font-semibold">Booking No: {key}</div>
                                 <div>Date: {new Date(value.departure_time).toLocaleDateString('en-UK', {
                                     day: 'numeric',
@@ -146,7 +151,9 @@ function ViewBooking() {
                     })}
                 </div>
             ) : (
-                <div className="bg-gray-100 text-gray-500">No bookings found</div>
+                <div className="bg-gray-100 text-gray-500 rounded-2xl flex justify-center">
+                    <div>No bookings found</div>
+                </div>
             )}
         </div>
     );
