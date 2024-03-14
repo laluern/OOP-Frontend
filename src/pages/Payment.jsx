@@ -48,11 +48,11 @@ function Payment() {
             <img src="/src/assets/MeltPlane.svg" className="absolute inset-0 object-cover z-[-1]"/>
         </div>
         <div className="rounded-3xl border-solid bg-slate-200 pe-5 mb-8 w-3/12 border-1 border-slate-500 shadow-md">
-            <h1 className="text-bold text-3xl text-center mt-6 italic">Price Summary</h1>
+            <h1 className="text-bold text-4xl text-center mt-6 underline">Price Summary</h1>
             <div className='p-8 text-center'>
-                <p className="pb-5 text-xl">Seat price : {detail && detail.price && JSON.stringify(detail.price['seat price'])}</p>
-                <p className="pb-5 text-xl">Luggages price : {detail && detail.price && JSON.stringify(detail.price['luggages price'])}</p>
-                <p className="pb-1 text-xl">Total price : {detail && detail.price && JSON.stringify(detail.price['Summary price'])}</p>
+                <p className="pb-5 text-xl">All Seat Price: {detail && detail.price && detail.price['seat price'].toLocaleString()}</p>
+                <p className="pb-5 text-xl">All Luggage Price: {detail && detail.price && detail.price['luggages price'].toLocaleString()}</p>
+                <p className="pb-1 text-xl">Total Price : {detail && detail.price && detail.price['Summary price'].toLocaleString()}</p>
             </div>
         </div>
         <div className="flex flex-col md:flex-row md:justify-center">

@@ -22,6 +22,12 @@
   height: 50px;
 }
 
+.selected-passenger {
+  background-color: #fc4433;
+  border-radius: 6px;
+  color: #fff;
+}
+
 .seat-map {
   display: grid;
   grid-template-columns: repeat(2, 40px) 100px repeat(3, 40px);

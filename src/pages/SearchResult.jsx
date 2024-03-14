@@ -31,21 +31,17 @@ function SearchResult() {
     <div className="h-screen relative">
       <img src="/src/assets/MeltPlane.svg" className="z-[-1] bg-cover fixed" style={{objectFit: 'cover' }}/>
         <Nav />
+        <div className="scrollable-container overflow-y-auto translate-y-20 d-flex">
         <div className="flex justify-center">
           <Sorting onSortChange={handleSortChange} />
         </div>
-        <div className="scrollable-container overflow-y-auto translate-y-44">
           {Object.keys(flightList).map(flightKey => (
-            <div className='flex flex-colflex justify-center mb-8'>
-              <div className=" w-2/6 rounded-xl border-solid border-1 border-slate-50 py-5">
-                <div className="flex justify-center" key={flightKey}>
+                <div className="flex justify-center items-center" key={flightKey}>
                   <FlightDetails flight_info={flightList[flightKey]} total_passenger={location.state.total_passenger}/>
                 </div>
-              </div>
-            </div>
           ))}
+          </div>
         </div>
-     </div> 
   );
 }
 

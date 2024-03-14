@@ -11,6 +11,7 @@ function PayByMobile() {
   const [password, setPassword] = useState();
 
   const location = useLocation()
+  const navigate = useNavigate()
   
   const booking_id = String(location.state.booking_id)
 
