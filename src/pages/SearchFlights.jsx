@@ -26,15 +26,17 @@ function SearchFlights() {
       total_passenger: passenger,
       promocode: promocode
     }
-
       const total_passenger = data.total_passenger
-      await axios.post("http://localhost:8000/search_flight", data)
-      // const response = await axios.get("http://localhost:8000/select_flight?sort_by=Cheapest")
-    navigate("/search/flights_results", {
-      state: {
-        total_passenger: total_passenger
+      const respone = await axios.post("http://localhost:8000/search_flight", data)
+      if (typeof respone.data == "string"){
+
+        alert(respone.data)
       }
-    })
+      else{
+        navigate("/search/flights_results", {
+        state: {
+          total_passenger: total_passenger
+          }})}
   }
 
   const handleDepartureChange = (e) => {
