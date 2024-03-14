@@ -22,7 +22,7 @@ function Account() {
       <br></br>
       <PersonalInfo/>
       <ViewBooking/>
-      <button onClick={logOut} className="bg-red-500 text-white">Log out</button>
+      <button onClick={logOut} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 my-10">Log out</button>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 import axios from "axios";
 
-function PassengersInfo({booking_data, passenger_data, booking_id}){
+function PassengersInfo({booking_data, passenger_data}){
 
     const navigate = useNavigate();
 
@@ -20,7 +20,10 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
     const [gender, setGender] = useState(Array.from({ length: total_passenger }, () => ""));
     const [currentPassenger, setCurrentPassenger] = useState(1);
 
-    const fill_info = async (passenger_info) => {
+    const fill_info = async (passenger_info, route) => {
+
+      const userId = cookies.user._User__user_id;
+      const response = await axios.post(`http://localhost:8000/${userId}/${flight_instance_no}/create_booking`);
 
       for (let passenger = 1; passenger <= total_passenger; passenger++) {
 
@@ -33,10 +36,19 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
           citizen_id: passenger_info[`Passenger${passenger}`]["citizen_id"],
           package: passenger_info[`Passenger${passenger}`]["weight"].toString()
         }
+          
           console.log(data)
-          await axios.post(`http://localhost:8000/${userId}/${booking_id}/${flight_instance_no}/fill_info`, data)
+          await axios.post(`http://localhost:8000/${userId}/${response.data}/${flight_instance_no}/fill_info`, data)
 
       }
+
+      navigate(route, {
+        state: {
+          booking_data: booking_data,
+          passenger_data: PassengerInfo(),
+          booking_id: response.data
+        }
+      })
     }
 
     const check_info = (route) => {
@@ -50,19 +62,8 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
                 }
             }
         }
-      fill_info(passenger_info)
-      goto(route)
+      fill_info(passenger_info, route)
     }
-    
-      const goto = (route) => {
-        navigate(route, {
-            state: {
-              booking_data: booking_data,
-              passenger_data: PassengerInfo(),
-              booking_id: booking_id
-            }
-          })
-      };
     
     const handleFirstnameChange = (firstname) => {
         setFirstname((prev) => {
@@ -155,36 +156,36 @@ function PassengersInfo({booking_data, passenger_data, booking_id}){
         <div className="grid md:grid-cols-2 md:gap-6 m-5">
             <div className="relative z-0 w-full group">
                 <input type="text" placeholder="" value={firstname[currentPassenger - 1]} onChange={(e) => handleFirstnameChange(e.target.value)} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
-                <label for="floating_first_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+                <label htmlFor="floating_first_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
             </div>
             <div className="relative z-0 w-full group">
                 <input type="text" placeholder="" value={surname[currentPassenger - 1]} onChange={(e) => handleSurnameChange(e.target.value)} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
-                <label for="floating_last_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+                <label htmlFor="floating_last_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
             </div>
         </div>
         <div className="relative z-0 w-full mb-5 group m-5">
-            <input type="text" placeholder="" value={citizenID[currentPassenger - 1]} onChange={(e) => handleCitizenIDChange(e.target.value)} className="block py-2.5 px-0 w-11/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
-            <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Citizen ID</label>
+            <input type="text" placeholder="" maxLength="13" value={citizenID[currentPassenger - 1]} onChange={(e) => handleCitizenIDChange(e.target.value)} className="block py-2.5 px-0 w-11/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Citizen ID</label>
         </div>
         <div className="relative z-0 w-full mb-5 group m-5">
-            <input type="text" placeholder="" value={phoneNumber[currentPassenger - 1]} onChange={(e) => handlePhoneNumberChange(e.target.value)} className="block py-2.5 px-0 w-11/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
-            <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
+            <input type="text" placeholder="" maxLength="10" value={phoneNumber[currentPassenger - 1]} onChange={(e) => handlePhoneNumberChange(e.target.value)} className="block py-2.5 px-0 w-11/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required/>
+            <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
         </div>
         <div className="grid md:grid-cols-2 md:gap-6 m-5">
         <div className="relative z-0 w-full mb-5 group py-4">
             <input type="date" placeholder="Birth Date" value={birthDate[currentPassenger - 1]} onChange={(e) => handleBirthDateChange(e.target.value)} className="col-span-1 p-1 ps-4 bg-neutral-50 border-solid rounded-3xl pe-5 text-slate-800" required/>
         </div>
-        <div className="relative z-0 w-full mb-5 gap-10 py-2">
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="relative z-0 w-full mb-5 gap-10 py-2">
-                <input type="radio" name="gender" value="male" checked={gender[currentPassenger - 1] === 'male'} onChange={(e) => handleGenderChange(e.target.value)}/>
-                <label for="male">Male</label>
+        <div className="relative z-0 w-full mb-5 gap-10 py-2 mx-10">
+          <div className="flex flex-col gap-6">
+            <div>
+              <input type="radio" name="gender" value="male" checked={gender[currentPassenger - 1] === 'male'} onChange={(e) => handleGenderChange(e.target.value)}/>
+              <label htmlFor="male" className="mx-2">Male</label>
             </div>
-            <div className="relative z-0 w-full mb-5 gap-10 py-2">
-                <input type="radio" name="gender" value="female" checked={gender[currentPassenger - 1] === 'female'} onChange={(e) => handleGenderChange(e.target.value)}/>
-                <label for="female">Female</label>
+            <div>
+              <input type="radio" name="gender" value="female" checked={gender[currentPassenger - 1] === 'female'} onChange={(e) => handleGenderChange(e.target.value)}/>
+              <label htmlFor="female" className="mx-2">Female</label>
             </div>
-            </div>
+          </div>
         </div>
         </div>
             <div>

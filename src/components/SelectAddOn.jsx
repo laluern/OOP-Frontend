@@ -25,26 +25,18 @@ function SelectAddOn({booking_data, total_passenger}) {
   const booking = location.state.booking_data
 
   const CreateData = async (route) => {
-    try {
-      const userId = cookies.user._User__user_id;
-      const response = await axios.post(`http://localhost:8000/${userId}/${flight_instance_no}/create_booking`);
 
       const goto = (route) => {
         navigate(route, {
             state: {
               booking_data: booking,
               passenger_data: PassengerAddOn(),
-              booking_id: response.data
             }
           })
       };
 
       goto(route);
 
-    } catch (error) {
-      alert("Failed");
-      return null;
-    }
   }
 
   const check_seat = (route) => {

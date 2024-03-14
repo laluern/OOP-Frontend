@@ -4,10 +4,10 @@ import axios from 'axios';
 import Nav from '../components/Nav';
 
 function SearchFlights() {
-  const [departure, setDeparture] = useState("Chiang Mai"); // Set initial value for departure
+  const [departure, setDeparture] = useState("Suvarnabhumi"); // Set initial value for departure
   const [departureDate, setDepartureDate] = useState();
-  const [destination, setDestination] = useState("Hat Yai"); // Set initial value for destination
-  const [passenger, setPassenger] = useState();
+  const [destination, setDestination] = useState("Chiang Mai"); // Set initial value for destination
+  const [passenger, setPassenger] = useState("1");
   const [promocode, setPromocode] = useState(""); 
   // const [result, setResult] = useState(null);
 
@@ -82,10 +82,10 @@ function SearchFlights() {
                     <select value={departure} onChange={handleDepartureChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
                       {destination && (
                         <>
-                          <option value="Chiang Mai" disabled={destination === "Chiang Mai"}>Chiang Mai</option>
-                          <option value="Hat Yai" disabled={destination === "Hat Yai"}>Hat Yai</option>
-                          <option value="Suvarnabhumi" disabled={destination === "Suvarnabhumi"}>Suvarnabhumi</option>
-                          <option value="Khon Kaen" disabled={destination === "Khon Kaen"}>Khon Kaen</option>
+                        <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>                      
+                        <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiang Mai</option>
+                        <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hat Yai</option>
+                        <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khon Kaen</option>
                         </>
                       )}
                     </select>
@@ -97,9 +97,9 @@ function SearchFlights() {
                   <select value={destination} onChange={handleDestinationChange} className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" required>
                     {departure && (
                       <>
+                        <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>                      
                         <option value="Chiang Mai" disabled={departure === "Chiang Mai"}>Chiang Mai</option>
                         <option value="Hat Yai" disabled={departure === "Hat Yai"}>Hat Yai</option>
-                        <option value="Suvarnabhumi" disabled={departure === "Suvarnabhumi"}>Suvarnabhumi</option>
                         <option value="Khon Kaen" disabled={departure === "Khon Kaen"}>Khon Kaen</option>
                       </>
                     )}
@@ -121,7 +121,7 @@ function SearchFlights() {
                   {/* promocode */}
                   <div className="flex flex-col">
                     <label htmlFor="promocode" className="text-slate-50 text-xl italic mt-4">Promocode</label>
-                    <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-1 mb-1 mt-2 rounded-xl box-border w-11/12" />
+                    <input onChange={handlePromocode} value={promocode} type="text" name="promocode" className="text-base p-3 mb-1 mt-2 rounded-xl box-border w-11/12" />
                   </div>
                  </div>
 
@@ -132,7 +132,6 @@ function SearchFlights() {
         )
           // : <div>{JSON.stringify(result)}</div>
       }
-
     </div >
   );
 }
