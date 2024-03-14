@@ -31,11 +31,11 @@ function FlightDetails({flight_info, total_passenger}){
       </div>
       <div>
         {flight_info.price === flight_info.discount ? (
-          <p className="flex justify-center m-6">{flight_info.price} THB</p>
+          <p className="flex justify-center m-6">{flight_info.price.toLocaleString()} THB</p>
         ) : (
           <div>
-            <p className="flex justify-center mt-4 line-through">{flight_info.price} THB</p>
-            <p className="flex justify-center">{flight_info.discount} THB</p>
+            <p className="flex justify-center mt-4 line-through">{flight_info.price.toLocaleString()} THB</p>
+            <p className="flex justify-center">{flight_info.discount.toLocaleString()} THB</p>
           </div>
         )}
         <div className="flex justify-center m-4">

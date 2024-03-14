@@ -40,6 +40,7 @@ function Register() {
             setCookie('user', response.data.user , { path: '/' });
             const responseMessageString = JSON.stringify(response.data.message)
             alert(responseMessageString)
+            handleRegister();
         }
         catch(error) {
             alert("Failed")
@@ -77,7 +78,7 @@ function Register() {
 
     function handleRegister() {
         navigate("/home")
-    }
+    };
 
 return (
     <div className="flex flex-colflex justify-center items-center min-h-screen">
@@ -85,8 +86,6 @@ return (
             <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
         </video>
         {
-            !result ? 
-            // box
             <div className="backdrop-blur-lg shadow-2xl w-96 rounded-3xl border-solid border-1 border-slate-50 py-8 px-10">
                 
                 <h1 className="text-slate-50 text-4xl text-center text-5x1 font-medium">Sign up</h1>
@@ -123,9 +122,6 @@ return (
                 </div>
 
                     <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Register</button>
-                </div> :
-                <div>
-                    <button onClick={handleRegister} className="bg-white p-4 rounded-3xl text-red-500 hover:bg-gray-200">home</button>
                 </div>
         }
     </div>

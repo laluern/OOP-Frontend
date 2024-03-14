@@ -51,16 +51,24 @@ function PayByMobile() {
     setPassword(e.target.value);
   };
 
+  const back = () => {
+    navigate("/payment", {
+      state: {
+        booking_id: booking_id
+      }
+    })
+  }
+
   return (
     <div>
       <Nav/>
       <video autoPlay loop muted playsInline className="absolute right-0 bottom-0 z-[-1]">
         <source src="/src/assets/plane2.mp4" type="video/mp4"></source>
       </video>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center h-screen">
     <div className="bg-red-500 p-10 rounded-xl shadow-lg flex flex-col items-center">
-      <h1 className="text-white text-2xl mb-4 ud">Total Price</h1>
-      <p className="text-white text-xl mb-8">{location.state.total_price.toLocaleString()}</p>
+      <h1 className="text-white text-4xl mb-4 underline">Pay By Mobile</h1>
+      <h1 className="text-white text-2xl mb-4">Total Price : {location.state.total_price.toLocaleString()}</h1>
           <div className="flex flex-col gap-4 w-80">
             <input
               value={ownerName}
@@ -94,6 +102,8 @@ function PayByMobile() {
 </div>
       <button className="bg-red-700 text-white font-bold py-3 px-6 rounded-lg mt-5 transition duration-300 ease-in-out transform hover:scale-105 w-full" onClick={sendData}>Pay</button>
     </div>
+    <button onClick={back} className="shadow-md rounded-3xl border-solid bg-slate-200 w-1/12 py-3 mt-6 hover:bg-red-500 hover:text-white transition-colors">Back
+      </button>
   </div>
 </div>
   );
