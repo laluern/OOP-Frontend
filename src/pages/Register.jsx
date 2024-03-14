@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import { LuUser, LuPhone, LuHome, LuCalendarDays } from "react-icons/lu";
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
 
@@ -13,6 +14,8 @@ function Register() {
     const [address, setAddress] = useState();
     const [birthDate, setBirthDate] = useState();
     const [result, setResult] = useState(null);
+
+    const [cookies, setCookie] = useCookies(['user']);
 
     const navigate = useNavigate()
 
@@ -34,6 +37,7 @@ function Register() {
             const response = await axios.post("http://localhost:8000/register", data)
             console.log(response.data)
             setResult(response.data.status)
+            setCookie('user', response.data.user , { path: '/' });
             const responseMessageString = JSON.stringify(response.data.message)
             alert(responseMessageString)
         }
@@ -121,7 +125,7 @@ return (
                     <button className="transition-colors duration-200 bg-white text-red-500 w-full h-11 border-none outline-none rounded-3xl cursor-pointer font-medium mt-3 hover:bg-red-500 hover:text-neutral-50" onClick={sendData}>Register</button>
                 </div> :
                 <div>
-                    <button onClick={handleRegister}>home</button>
+                    <button onClick={handleRegister} className="bg-white p-4 rounded-3xl text-red-500 hover:bg-gray-200">home</button>
                 </div>
         }
     </div>
