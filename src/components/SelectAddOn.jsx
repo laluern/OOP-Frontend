@@ -210,16 +210,16 @@ function SelectAddOn({ booking_data, total_passenger }) {
             ))}
           </div>
         </div>
-      </div>
-      <div className="flex justify-center gap-6">
-        <div className="flex justify-center">
-          {total_price()}
         </div>
-        <div>
-          <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => check_seat("/fill_info")}>Continue</button>
+        <div className="flex justify-center gap-6">
+          <div className="flex justify-center">
+            {total_price()}
+          </div>
+          <div>
+            <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => check_seat("/fill_info")}>Continue</button>
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 export default SelectAddOn;
