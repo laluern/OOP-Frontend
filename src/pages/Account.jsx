@@ -4,7 +4,6 @@ import { useCookies } from 'react-cookie'
 import Nav from '../components/Nav'
 import { Navigate, useNavigate } from 'react-router-dom'
 import ViewBooking from '../components/ViewBooking'
-import BookingDetails from '../components/BookingDetails'
 
 function Account() {
   const [cookies, setCookie] = useCookies(['user'])
@@ -12,8 +11,13 @@ function Account() {
   const navigate = useNavigate()
 
   function logOut() {
-    setCookie('user', null , { path: '/' })
-    navigate("/login")
+    
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+
+    if (confirmLogout) {
+      setCookie('user', null , { path: '/' })
+      navigate("/login")
+    }
   }
 
   return (
@@ -21,8 +25,8 @@ function Account() {
       <Nav/>
       <br></br>
       <PersonalInfo/>
-      <ViewBooking/>
       <button onClick={logOut} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 my-10">Log out</button>
+      <ViewBooking/>
     </div>
   )
 }

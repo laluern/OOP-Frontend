@@ -25,9 +25,9 @@ function PersonalInfo() {
     }
 
   return (
-            <div className="container mx-auto mt-8 p-4">
+            <div className="container mx-auto mt-8 p-4 ">
                 <h1 className="text-3xl font-semibold mb-4">Personal Information</h1>
-                <div className="bg-gray-100 rounded p-4">
+                <div className="bg-gray-100 rounded p-4 rounded-2xl">
                     {personalInfo && (
                         <div>
                             <p className="mb-2">User ID: {cookies.user._User__user_id}</p>

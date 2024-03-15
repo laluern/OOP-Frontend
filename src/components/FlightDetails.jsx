@@ -18,7 +18,7 @@ function FlightDetails({flight_info, total_passenger}){
     const [destination_date, destination_time] = flight_info.destination_time.split(' ');
 
     return (
-    <div className='bg-gray-50 w-2/3 h-56 rounded-3xl m-5'>
+    <div className='bg-gray-100 w-1/4 h-56 rounded-3xl m-5'>
       <div className="flex justify-center space-x-20 mt-5 mb-3">
         <p>{flight_info.departure}</p>
         <p>{flight_info.duration}</p>
@@ -26,16 +26,16 @@ function FlightDetails({flight_info, total_passenger}){
       </div>
       <div className="flex justify-center">
         <p>{departure_time}</p>
-        <p> ------------------</p>
+        <p className="text-bold">&#8594;</p>
         <p>{destination_time}</p>
       </div>
       <div>
         {flight_info.price === flight_info.discount ? (
-          <p className="flex justify-center">{flight_info.price} THB</p>
+          <p className="flex justify-center m-6">{flight_info.price.toLocaleString()} THB</p>
         ) : (
           <div>
-            <p className="flex justify-center mt-4">{flight_info.price} THB</p>
-            <p className="flex justify-center">{flight_info.discount} THB</p>
+            <p className="flex justify-center mt-4 line-through">{flight_info.price.toLocaleString()} THB</p>
+            <p className="flex justify-center">{flight_info.discount.toLocaleString()} THB</p>
           </div>
         )}
         <div className="flex justify-center m-4">

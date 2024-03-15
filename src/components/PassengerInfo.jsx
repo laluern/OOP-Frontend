@@ -138,17 +138,18 @@ function PassengersInfo({booking_data, passenger_data}){
     
     return (
     <div>
-        <div className="passenger-button -translate-x-48 translate-y-6 ">
+        <div className="passenger-button -translate-x-36 translate-y-6 ">
           {Array.from({ length: total_passenger }, (_, index) => (
-            <div className="mb-4">
+            <div className="mb-3">
             <button
               key={index + 1}
               onClick={() => handlePassengerChange(index + 1)}
-              className={currentPassenger === index + 1 ? "selected rounded-xl w-36 h-12" : ""}
+              className={currentPassenger === index + 1 ? "selected-passenger" : ""}
             >
-              <p className="font p-3 place-content-center">
+              <p className="font-bold">
               Passenger {index + 1}
               </p>
+              <p>({passenger_data[`Passenger${index + 1}`].seat} , {passenger_data[`Passenger${index + 1}`].weight} kg)</p>
             </button>
             </div>
           ))}
