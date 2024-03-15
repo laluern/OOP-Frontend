@@ -67,7 +67,6 @@ function SelectAddOn({ booking_data, total_passenger }) {
     let seat_count = 0;
     let luggage_price = 0;
     let luggage_count = 0;
-    console.log({ length: selectedSeats })
 
     Object.values(selectedSeats).forEach((seat) => {
 

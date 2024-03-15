@@ -34,7 +34,6 @@ function Register() {
         }
         try {
             const response = await axios.post("http://localhost:8000/register", data)
-            console.log(response.data)
             setResult(response.data.status)
             setCookie('user', response.data.user , { path: '/' });
             const responseMessageString = JSON.stringify(response.data.message)

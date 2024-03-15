@@ -43,9 +43,7 @@ function ViewBooking() {
         try {
             const userId = cookies.user._User__user_id
             const response = await axios.get(`http://localhost:8000/${userId}/view_my_bookings`)
-            console.log(response.data)
             setMyBooking(response.data)
-            console.log(myBooking)
         }
         catch (error) {
             alert("Error" + error.name)
@@ -61,7 +59,6 @@ function ViewBooking() {
             try {
                 const userId = cookies.user._User__user_id
                 const response = await axios.put(`http://localhost:8000/${userId}/cancel_booking?booking_no=${key}`)
-                console.log(response.data)
                 window.location.reload();
             }
             catch (error) {
@@ -70,7 +67,6 @@ function ViewBooking() {
             }
         }
     }
-    console.log(myBooking)
 
     return (
         <div className="container mx-auto mt-8 p-4">

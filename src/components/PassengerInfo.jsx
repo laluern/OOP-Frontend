@@ -36,9 +36,7 @@ function PassengersInfo({ booking_data, passenger_data }) {
         package: passenger_info[`Passenger${passenger}`]["weight"].toString()
       }
 
-      console.log(data)
       await axios.post(`http://localhost:8000/${userId}/${response.data}/${flight_instance_no}/fill_info`, data)
-
     }
 
     navigate(route, {

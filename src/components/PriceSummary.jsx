@@ -14,7 +14,6 @@ function PriceSummary() {
         try {
             const userId = cookies.user._User__user_id
             const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/booking_details`)
-            console.log(response.data)
             setDetail(response.data)
         }
         catch (error) {

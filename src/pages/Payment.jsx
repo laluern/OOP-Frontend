@@ -11,7 +11,6 @@ function Payment() {
     const navigate = useNavigate()
     const location = useLocation()
 
-    console.log(location.state.booking_id)
     const booking_no = String(location.state.booking_id)
 
     const [detail, setDetail] = useState();
@@ -21,7 +20,6 @@ function Payment() {
         try {
             const userId = cookies.user._User__user_id
             const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/show_price_summary`)
-            console.log(response.data)
             setDetail(response.data)
         }
         catch (error) {

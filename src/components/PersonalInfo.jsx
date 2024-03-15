@@ -14,7 +14,6 @@ function PersonalInfo() {
         try {
             const userId = cookies.user._User__user_id;
             const response = await axios.get(`http://localhost:8000/${userId}/view_personal_info`);
-            console.log(response.data)
             setPersonalInfo(response.data)
         }
         catch (error) {

@@ -25,7 +25,6 @@ function Login() {
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/login", userData)
-      console.log(response.data)
       setLoginResult(response.data.status)
       setCookie('user', response.data.user , { path: '/' });
       const responseMessageString = JSON.stringify(response.data.message)
