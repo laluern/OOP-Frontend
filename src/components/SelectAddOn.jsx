@@ -216,7 +216,7 @@ function SelectAddOn({ booking_data, total_passenger }) {
             {total_price()}
           </div>
           <div>
-            <button className="text-white bg-red-500 w-16 h-11 rounded-2xl mx-5" onClick={() => check_seat("/fill_info")}>Continue</button>
+          <button className="text-white bg-red-500 w-18 h-11 rounded-2xl mx-5 p-2" onClick={() => check_seat("/fill_info")}>Continue</button>
           </div>
         </div>
       </div>

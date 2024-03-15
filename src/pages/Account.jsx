@@ -15,7 +15,7 @@ function Account() {
 
     if (confirmLogout) {
       setCookie('user', null, { path: '/' })
-      navigate("/login")
+      navigate("/")
     }
   }
 
