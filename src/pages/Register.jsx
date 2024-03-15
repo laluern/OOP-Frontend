@@ -39,7 +39,10 @@ function Register() {
             setCookie('user', response.data.user , { path: '/' });
             const responseMessageString = JSON.stringify(response.data.message)
             alert(responseMessageString)
-            handleRegister();
+
+            if (response.data.message !== "Failed to create user"){
+                handleRegister();
+              }
         }
         catch(error) {
             alert("Failed")
