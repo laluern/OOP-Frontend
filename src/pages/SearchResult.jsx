@@ -15,7 +15,7 @@ function SearchResult() {
     const fetchData = async () => {
       const sort = selectedSort;
       const response = await axios.get(
-        `http://localhost:8000/select_flight?sort_by=${sort}`
+        `http://localhost:8000/sort_flight?sort_by=${sort}`
       );
       setflightList(response.data);
     };

@@ -97,7 +97,7 @@ function SelectAddOn({ booking_data, total_passenger }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/${flight_instance_no}/select_seat`
+          `http://localhost:8000/${flight_instance_no}/view_seat_map`
         );
         setSeatData(response.data);
       } catch (error) {

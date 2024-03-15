@@ -7,7 +7,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
   const navigate = useNavigate()
-  
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loginResult, setLoginResult] = useState(null);
@@ -27,10 +27,12 @@ function Login() {
       const response = await axios.post("http://127.0.0.1:8000/login", userData)
       console.log(response.data)
       setLoginResult(response.data.status)
-      setCookie('user', response.data.user, { path: '/' });
+      setCookie('user', response.data.user , { path: '/' });
       const responseMessageString = JSON.stringify(response.data.message)
       alert(responseMessageString)
-      handleLogin()
+      if (response.data.message === "Logged in successfully"){
+        handleLogin()
+      }
 
     }
     catch (error) {

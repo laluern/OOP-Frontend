@@ -25,7 +25,7 @@ function PayByMobile() {
     }
     try {
       const userId = cookies.user._User__user_id;
-      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/mobilebanking?booking_id=${booking_id}`, data)
+      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/pay_by_mobile_banking?booking_id=${booking_id}`, data)
       console.log(response.data)
       alert(response.data)
       navigate("/account")
@@ -67,7 +67,7 @@ function PayByMobile() {
       </video>
       <div className="flex flex-col justify-center items-center h-screen">
         <div className="bg-red-500 p-10 rounded-xl shadow-lg flex flex-col items-center">
-          <h1 className="text-white text-4xl mb-4 underline">Pay By Mobile</h1>
+          <h1 className="text-white text-4xl mb-4 underline">Pay By Mobile Banking</h1>
           <h1 className="text-white text-2xl mb-4">Total Price : {location.state.total_price.toLocaleString()}</h1>
           <div className="flex flex-col gap-4 w-80">
             <input

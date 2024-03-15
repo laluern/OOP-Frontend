@@ -20,7 +20,7 @@ function Payment() {
     const price = async () => {
         try {
             const userId = cookies.user._User__user_id
-            const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/booking_details`)
+            const response = await axios.get(`http://localhost:8000/${userId}/${booking_no}/show_price_summary`)
             console.log(response.data)
             setDetail(response.data)
         }

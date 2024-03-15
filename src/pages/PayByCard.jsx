@@ -46,7 +46,7 @@ function PayByCard() {
     }
     try {
       const userId = cookies.user._User__user_id;
-      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/creditcard?booking_id=${booking_id}`, data)
+      const response = await axios.put(`http://localhost:8000/${userId}/payment_method/pay_by_card?booking_id=${booking_id}`, data)
       console.log(response.data)
       alert(response.data)
       navigate("/account")

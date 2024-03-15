@@ -167,60 +167,60 @@ h3 {
 
 .boardingPass-name {
 
-  position: absolute;
-  left: 560px;
-  top: 90px;
-  font-size: 20px;
+  position: relative;
+  left: 35px;
+  top: -390px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .boardingPass-departure {
 
-  position: absolute;
-  left: 550px;
-  top: 155px;
+  position: relative;
+  left: 35px;
+  top: -353px;
   font-size: 14px;
   font-weight: bold;
 }
 
 .boardingPass-destination {
 
-  position: absolute;
-  left: 710px;
-  top: 155px;
+  position: relative;
+  left: 200px;
+  top: -373px;
   font-size: 14px;
   font-weight: bold;
 }
 
 .boardingPass-flight_no {
 
-  position: absolute;
-  left: 555px;
-  top: 220px;
+  position: relative;
+  left: 30px;
+  top: -330px;
   font-size: 14px;
 }
 
 .boardingPass-date {
 
-  position: absolute;
-  left: 650px;
-  top: 220px;
+  position: relative;
+  left: 120px;
+  top: -351px;
   font-size: 14px;
 }
 
 .boardingPass-time {
 
-  position: absolute;
-  left: 770px;
-  top: 220px;
+  position: relative;
+  left: 245px;
+  top: -372px;
   font-size: 14px;
 }
 
 .boardingPass-seat {
 
-  position: absolute;
-  left: 630px;
-  top: 245px;
+  position: relative;
+  left: 100px;
+  top: -368px;
   font-size: 24px;
   font-weight: bold;
 }
